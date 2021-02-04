@@ -29,7 +29,7 @@ public class Member {
     private List<Liked> likedList = new ArrayList<>();
 
     @Builder
-    public Long Member(String password, String name,
+    public Member(String password, String name,
                 String nickname, String profileImage,
                 String phone) {
         this.password = password;
@@ -37,7 +37,5 @@ public class Member {
         this.nickname = nickname;
         this.profileImage = profileImage;
         this.phone = phone;
-
-        return this.getId();
     }
 }
