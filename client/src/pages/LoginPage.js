@@ -1,20 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { withRouter } from 'react-router-dom';
 
 import Logo from 'components/Logo';
 
-const LoginPage = () => {
+const LoginPage = (props) => {
+  const [id, setId] = useState('');
+  const [pw, setPw] = useState('');
+
+  const onChangeIdInput = (e) => {
+    setId(e.target.value);
+  };
+
+  const onChangePwInput = (e) => {
+    setPw(e.target.value);
+  };
+
+  const onClickSignInButton = () => {
+    props.history.push('/signin');
+  };
+
   return (
     <Container>
       <Logo />
       <HeaderText>로그인 페이지</HeaderText>
       <p>아이디</p>
-      <Input />
+      <Input onChange={onChangeIdInput} value={id} />
       <p>패스워드</p>
-      <Input />
+      <Input onChange={onChangePwInput} value={pw} />
       <div>
         <Button>로그인</Button>
-        <Button>회원가입</Button>
+        <Button onClick={onClickSignInButton}>회원가입</Button>
       </div>
     </Container>
   );
@@ -50,4 +66,4 @@ const HeaderText = styled.p`
   font-weight: 600;
 `;
 
-export default LoginPage;
+export default withRouter(LoginPage);
