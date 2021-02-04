@@ -27,7 +27,7 @@ public class Member {
     private String phone;
 
     @Builder
-    public Long User(String password, String name,
+    public Long Member(String password, String name,
                 String nickname, String profileImage,
                 String phone) {
         this.password = password;
