@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import SearchInput from 'components/header/searchbox/SearchInput';
+
 const Header = () => {
   return (
     <Container>
@@ -12,7 +14,7 @@ const Header = () => {
         </p>
       </Left>
       <Right>
-        <p>검색창</p>
+        <SearchInput />
         {/* 로그인이 되었으면 다른 것으로 변경해서 보여줘야함
             login ? 로그인 : 로그아웃
         */}
