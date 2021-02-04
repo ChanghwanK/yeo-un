@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Getter
-public class Category {
+public class Category extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
