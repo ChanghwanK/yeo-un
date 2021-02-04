@@ -14,6 +14,7 @@ const App = () => {
 
 const AppContainer = styles.div`
   diplay: flex;
+  overflow-x: hidden;
 `;
 
 export default App;

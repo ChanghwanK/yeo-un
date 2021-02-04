@@ -17,8 +17,6 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 30px;
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
-  font-family: 'Noto Sans KR', sans-serif;
 `;
 
 export default SubHeaderItem;
