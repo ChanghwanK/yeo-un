@@ -29,8 +29,8 @@ const LoginPage = () => {
     formData.append('content', contents);
     formData.append('created_at', time);
     // formData.append('modified_at', );
-    // formData.append('like_count', );
-    // formData.append('view_count', );
+    formData.append('like_count', 0);
+    formData.append('view_count', 0);
     // formData.append('user_id', );
     formData.append('category_id', category);
     formData.append('thumbnail', fileURL);

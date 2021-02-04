@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 import Logo from 'components/Logo';
 
@@ -20,6 +21,19 @@ const LoginPage = (props) => {
     props.history.push('/signin');
   };
 
+  const onClickLoginButton = () => {
+    // if (id !== '' && pw !== '') {
+    //   axios({
+    //     // url: 'https://test/api/cafe/list/today',
+    //     method: 'post',
+    //     data: {
+    //       email: id,
+    //       password: pw,
+    //     },
+    //   });
+    // }
+  };
+
   return (
     <Container>
       <Logo />
@@ -29,7 +43,7 @@ const LoginPage = (props) => {
       <p>패스워드</p>
       <Input type="password" onChange={onChangePwInput} value={pw} />
       <div>
-        <Button>로그인</Button>
+        <Button onClick={onClickLoginButton}>로그인</Button>
         <Button onClick={onClickSignInButton}>회원가입</Button>
       </div>
     </Container>
