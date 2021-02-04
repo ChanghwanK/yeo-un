@@ -7,7 +7,9 @@ const Header = () => {
     <Container>
       <Left>
         <p>로고</p>
-        <p>다른거</p>
+        <p>
+          <Link to="/yeoun/upload">여운 올리기</Link>
+        </p>
       </Left>
       <Right>
         <p>검색창</p>
@@ -46,7 +48,7 @@ const Left = styled.div`
 
 const Right = styled.div`
   display: flex;
-  padding-right: 50px;
+  padding-right: 30px;
   p {
     margin: 20px;
     cursor: pointer;

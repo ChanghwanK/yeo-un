@@ -24,10 +24,10 @@ const LoginPage = (props) => {
     <Container>
       <Logo />
       <HeaderText>로그인 페이지</HeaderText>
-      <p>아이디</p>
-      <Input onChange={onChangeIdInput} value={id} />
+      <p>이메일</p>
+      <Input type="text" onChange={onChangeIdInput} value={id} />
       <p>패스워드</p>
-      <Input onChange={onChangePwInput} value={pw} />
+      <Input type="password" onChange={onChangePwInput} value={pw} />
       <div>
         <Button>로그인</Button>
         <Button onClick={onClickSignInButton}>회원가입</Button>
