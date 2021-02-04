@@ -1,11 +1,18 @@
 package com.yeoun.server.domain;
 
+import lombok.AccessLevel;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {
 
     @Id
@@ -18,4 +25,17 @@ public class Member {
     private String nickname;
     private String profileImage;
     private String phone;
+
+    @Builder
+    public Long User(String password, String name,
+                String nickname, String profileImage,
+                String phone) {
+        this.password = password;
+        this.name = name;
+        this.nickname = nickname;
+        this.profileImage = profileImage;
+        this.phone = phone;
+
+        return this.getId();
+    }
 }
