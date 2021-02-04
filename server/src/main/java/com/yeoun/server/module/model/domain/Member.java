@@ -30,9 +30,12 @@ public class Member {
     private List<Liked> likedList = new ArrayList<>();
 
     @Builder
-    public Member(String email, String password,
-                  String name, String nickname,
-                  String profileImage, String phone) {
+    public Member(String email,
+                  String password,
+                  String name,
+                  String nickname,
+                  String profileImage,
+                  String phone) {
         this.email = email;
         this.password = password;
         this.name = name;
