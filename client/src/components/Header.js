@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -10,6 +11,12 @@ const Header = () => {
       </Left>
       <Right>
         <p>검색창</p>
+        {/* 로그인이 되었으면 다른 것으로 변경해서 보여줘야함
+            login ? 로그인 : 로그아웃
+        */}
+        <p>
+          <Link to="/login">로그인</Link>
+        </p>
       </Right>
     </Container>
   );
@@ -33,6 +40,7 @@ const Left = styled.div`
   padding-left: 30px;
   p {
     margin: 20px;
+    cursor: pointer;
   }
 `;
 
@@ -41,6 +49,7 @@ const Right = styled.div`
   padding-right: 50px;
   p {
     margin: 20px;
+    cursor: pointer;
   }
 `;
 

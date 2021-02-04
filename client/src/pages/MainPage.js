@@ -8,7 +8,9 @@ const MainPage = () => {
     <>
       <Header />
       <Container>
-        <p>여운 - Yeo Un</p>
+        <p>
+          <strong>여운 - Yeo Un</strong>
+        </p>
       </Container>
     </>
   );
