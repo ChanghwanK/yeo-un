@@ -77,4 +77,9 @@ public class Yeoun {
         images.add(image);
         image.setYeoun(this);
     }
+
+    public void addComment(Comment comment) {
+        comments.add(comment);
+        comment.setYeoun(this);
+    }
 }
