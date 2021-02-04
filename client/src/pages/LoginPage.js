@@ -1,9 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Logo from 'components/Logo';
+
 const LoginPage = () => {
   return (
     <Container>
+      <Logo />
       <HeaderText>로그인 페이지</HeaderText>
       <p>아이디</p>
       <Input />
@@ -32,6 +35,7 @@ const Container = styled.div`
 const Input = styled.input`
   border: 1px solid black;
   margin: 10px;
+  padding: 10px;
 `;
 
 const Button = styled.button`
