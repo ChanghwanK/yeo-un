@@ -35,5 +35,6 @@ module.exports = {
     'jsx-a11y/no-noninteractive-element-interactions': 0,
     'react/destructuring-assignment': 0,
     'no-unused-vars': 0,
+    'dot-notation': 0,
   },
 };
