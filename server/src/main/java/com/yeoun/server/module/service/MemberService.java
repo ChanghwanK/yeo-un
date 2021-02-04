@@ -9,6 +9,8 @@ import com.yeoun.server.module.model.domain.Member;
 import com.yeoun.server.module.model.dto.MemberSignUpDto;
 import com.yeoun.server.module.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,12 +25,26 @@ public class MemberService {
     private final JsonBuilder jsonBuilder;
     private final ObjectMapper objectMapper;
 
+    public Member findOne(Long memberId) {
+        return memberRepository.findById(memberId).orElse(null);
+    }
+
+    public Member findMemberByName(String name) {
+        return memberRepository.findByName(name).orElse(null);
+    }
+
+    public Page<Member> findAll(Pageable pageable) {
+        return memberRepository.findAll(pageable);
+    }
+
+    @Transactional
     public String signUp(JsonNode payload) throws JsonProcessingException {
         Member member = saveNewMember(payload);
         return jsonBuilder.buildJsonWithHeader("SignUpResponse", Long.toString(member.getId()));
     }
 
-    private Member saveNewMember(JsonNode payload) throws JsonProcessingException {
+    @Transactional
+    public Member saveNewMember(JsonNode payload) throws JsonProcessingException {
         MemberSignUpDto memberSignUpDto = objectMapper.treeToValue(payload, MemberSignUpDto.class);
         memberSignUpDto.validateFieldsNotNull();
         checkDuplicateUser(memberSignUpDto);
