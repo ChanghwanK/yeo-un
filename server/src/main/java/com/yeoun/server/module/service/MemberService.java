@@ -67,5 +67,4 @@ public class MemberService {
         if (!foundMembers.isEmpty())
             throw new DuplicateUserException("email=" + email);
     }
-
 }
