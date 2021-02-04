@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import axios from 'axios';
+import moment from 'moment';
 import Logo from 'components/Logo';
 
 const LoginPage = () => {
-  // const [title, setTitle] = useState('');
-  // const [contents, setContent] = useState('');
   const [category, setCategory] = useState('movie');
   const [file, setFile] = useState('');
   const [fileURL, setFileURL] = useState('');
@@ -18,17 +17,37 @@ const LoginPage = () => {
     e.preventDefault();
     const title = document.getElementsByName('title')[0].value.trim();
     const contents = document.getElementsByName('contents')[0].value.trim();
-    const fileName = file[0]['uploadedFile'].name;
+    const time = moment().format('YYYY-MM-DD hh:mm');
+    // const fileName = file[0]['uploadedFile'].name;
 
-    console.log(fileName, fileURL);
-    console.log(title, contents, category);
+    // console.log(fileName, fileURL);
+    // console.log(title, contents, category);
+    // console.log(time);
+
+    const formData = new FormData();
+    formData.append('title', title);
+    formData.append('content', contents);
+    formData.append('created_at', time);
+    // formData.append('modified_at', );
+    // formData.append('like_count', );
+    // formData.append('view_count', );
+    // formData.append('user_id', );
+    formData.append('category_id', category);
+    formData.append('thumbnail', fileURL);
+
+    // axios({
+    //   method: 'post',
+    //   url: '/api/dd',
+    //   data: formData,
+    //   headers: { 'Content-Type': 'multipart/form-data' },
+    // });
   };
 
-  const onChangeFile = async (e) => {
+  const onChangeFile = (e) => {
     const reader = new FileReader();
     const tempfile = e.target.files[0];
 
-    await reader.readAsDataURL(tempfile);
+    reader.readAsDataURL(tempfile);
     reader.onloadend = () => {
       setFile([...file, { uploadedFile: tempfile }]);
       setFileURL(reader.result);
