@@ -29,10 +29,6 @@ public class MemberService {
         return memberRepository.findById(memberId).orElse(null);
     }
 
-    public Member findMemberByName(String name) {
-        return memberRepository.findByName(name).orElse(null);
-    }
-
     public Page<Member> findAll(Pageable pageable) {
         return memberRepository.findAll(pageable);
     }
