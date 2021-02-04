@@ -2,16 +2,14 @@ import React from 'react';
 import styles from 'styled-components';
 
 import Header from 'components/header/Header';
+import SubHeader from 'components/sub-header/SubHeader';
 
 const MainPage = () => {
   return (
     <>
       <Header />
-      <Container>
-        <p>
-          <strong>여운 - Yeo Un</strong>
-        </p>
-      </Container>
+      <SubHeader />
+      <Container>hh</Container>
     </>
   );
 };
