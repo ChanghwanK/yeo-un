@@ -28,8 +28,16 @@ public class Comment {
     @OneToMany(mappedBy = "parent")
     private List<Comment> child = new ArrayList<>();
 
+    @ManyToOne(fetch = LAZY)
+    private Yeoun yeoun;
+
     public void addChildComment(Comment child) {
         this.child.add(child);
         child.setParent(this);
+    }
+
+    public void setYeoun(Yeoun yeoun) {
+        this.yeoun = yeoun;
+        yeoun.getComments().add(this);
     }
 }
