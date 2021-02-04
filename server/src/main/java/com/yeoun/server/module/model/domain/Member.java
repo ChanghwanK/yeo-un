@@ -26,6 +26,9 @@ public class Member {
     private String profileImage;
     private String phone;
 
+    @Enumerated
+    private MemberType memberType;
+
     @OneToMany(mappedBy = "member")
     private List<Post> postList = new ArrayList<>();
 
