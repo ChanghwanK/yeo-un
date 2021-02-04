@@ -27,6 +27,9 @@ public class Member {
     private String phone;
 
     @OneToMany(mappedBy = "member")
+    private List<Yeoun> yeounList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
     private List<Liked> likedList = new ArrayList<>();
 
     @Builder
