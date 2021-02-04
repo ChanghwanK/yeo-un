@@ -5,10 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,6 +24,9 @@ public class Member {
     private String nickname;
     private String profileImage;
     private String phone;
+
+    @OneToMany(mappedBy = "member")
+    private List<Liked> likedList = new ArrayList<>();
 
     @Builder
     public Long Member(String password, String name,
