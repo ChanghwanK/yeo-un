@@ -4,6 +4,7 @@ import styles from 'styled-components';
 import Header from 'components/header/Header';
 import SubHeader from 'components/sub-header/SubHeader';
 import ContentsContainer from 'components/main-contents/ContentsContainer';
+import Footer from 'components/main-footer/Footer';
 
 const MainPage = () => {
   return (
@@ -12,6 +13,7 @@ const MainPage = () => {
       <SubHeader />
       <Container>
         <ContentsContainer />
+        <Footer />
       </Container>
     </>
   );
@@ -19,7 +21,8 @@ const MainPage = () => {
 
 const Container = styles.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default MainPage;

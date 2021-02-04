@@ -50,7 +50,7 @@ const Left = styled.div`
 
 const Right = styled.div`
   display: flex;
-  padding-right: 30px;
+  padding-right: 50px;
   p {
     margin: 20px;
     cursor: pointer;
