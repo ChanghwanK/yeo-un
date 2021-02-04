@@ -29,15 +29,15 @@ public class Comment {
     private List<Comment> child = new ArrayList<>();
 
     @ManyToOne(fetch = LAZY)
-    private Yeoun yeoun;
+    private Post post;
 
     public void addChildComment(Comment child) {
         this.child.add(child);
         child.setParent(this);
     }
 
-    public void setYeoun(Yeoun yeoun) {
-        this.yeoun = yeoun;
-        yeoun.getComments().add(this);
+    public void setPost(Post post) {
+        this.post = post;
+        post.getComments().add(this);
     }
 }

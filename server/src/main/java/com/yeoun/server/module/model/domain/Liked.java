@@ -20,6 +20,6 @@ public class Liked {
     private Member member;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "yeoun_id")
-    private Yeoun yeoun;
+    @JoinColumn(name = "post_id")
+    private Post post;
 }

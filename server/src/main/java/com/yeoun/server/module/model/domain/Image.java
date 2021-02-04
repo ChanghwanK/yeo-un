@@ -16,11 +16,11 @@ public class Image {
     private String path;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "yeoun_id")
-    private Yeoun yeoun;
+    @JoinColumn(name = "post_id")
+    private Post post;
 
-    public void setYeoun(Yeoun yeoun) {
-        this.yeoun = yeoun;
-        yeoun.getImages().add(this);
+    public void setPost(Post post) {
+        this.post = post;
+        post.getImages().add(this);
     }
 }

@@ -13,11 +13,11 @@ import java.util.List;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Yeoun {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "yeoun_id")
+    @Column(name = "id")
     private Long id;
 
     private String title;
@@ -43,18 +43,18 @@ public class Yeoun {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "yeoun")
+    @OneToMany(mappedBy = "post")
     private List<Image> images = new ArrayList<>();
 
-    @OneToMany(mappedBy = "yeoun")
+    @OneToMany(mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public Yeoun(String title,
-                 String content,
-                 Member member,
-                 Category category,
-                 Image... images) {
+    public Post(String title,
+                String content,
+                Member member,
+                Category category,
+                Image... images) {
         this.title = title;
         this.content = content;
         this.createdAt = LocalDateTime.now();
@@ -70,16 +70,16 @@ public class Yeoun {
     //==연관관계 편의 메서드==//
     public void setMember(Member member) {
         this.member = member;
-        member.getYeounList().add(this);
+        member.getPostList().add(this);
     }
 
     public void addImage(Image image) {
         images.add(image);
-        image.setYeoun(this);
+        image.setPost(this);
     }
 
     public void addComment(Comment comment) {
         comments.add(comment);
-        comment.setYeoun(this);
+        comment.setPost(this);
     }
 }

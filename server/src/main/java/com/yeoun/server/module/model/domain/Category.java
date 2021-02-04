@@ -19,5 +19,5 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category")
-    private List<Yeoun> yeoun = new ArrayList<>();
+    private List<Post> post = new ArrayList<>();
 }
