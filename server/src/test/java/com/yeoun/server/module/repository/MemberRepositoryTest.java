@@ -1,16 +1,13 @@
-package com.yeoun.server.repository;
+package com.yeoun.server.module.repository;
 
-import com.yeoun.server.domain.Member;
+import com.yeoun.server.module.model.domain.Member;
 import org.junit.Test;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-
-import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,9 +26,7 @@ public class MemberRepositoryTest {
                 .build();
 
         // when
-        Long savedId = memberRepository.save(member);
 
         // then
-        Assertions.assertEquals(member, memberRepository.findOne(savedId));
     }
 }
