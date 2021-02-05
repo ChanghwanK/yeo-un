@@ -48,6 +48,8 @@ const ImgContainer = styled.div`
   img {
     overflow: hidden;
     object-fit: cover;
+    width: 100%;
+    height: 100%;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     &:hover {
       transform: scale(1.1);

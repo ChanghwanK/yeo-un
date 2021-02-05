@@ -24,7 +24,9 @@ const Header = () => {
             <Link to="/upload">여운 올리기</Link>
           </p>
         ) : (
-          ''
+          <p>
+            <Link to="/upload">여운 올리기</Link>
+          </p>
         )}
       </Left>
       <Right>

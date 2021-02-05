@@ -17,17 +17,17 @@ const MainCard = (
   return (
     <Container>
       <ImgContainer onClick={onClickCard}>
-        {image ? (
-          <img src={image} alt="카드 이미지" />
+        {props.image ? (
+          <img src={props.image} alt="카드 이미지" />
         ) : (
           <NullImageContainer>썸네일을 넣어주세요.</NullImageContainer>
         )}
       </ImgContainer>
       <ContentContainer
-        title={title}
-        content={content}
-        category={category}
-        hashtag={hashtag}
+        title={props.title}
+        content={props.content}
+        category={props.category}
+        hashtag={props.hashtag}
       />
     </Container>
   );
@@ -48,7 +48,7 @@ const ImgContainer = styled.div`
   border-radius: 10px;
   width: 100%;
   min-width: 200px;
-  max-width: 550px;
+  max-width: 500px;
   height: 20vw;
   min-height: 300px;
   max-height: 500px;
@@ -57,6 +57,8 @@ const ImgContainer = styled.div`
 
   img {
     overflow: hidden;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     &:hover {
