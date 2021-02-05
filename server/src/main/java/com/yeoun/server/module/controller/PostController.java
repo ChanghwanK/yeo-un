@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class PostController {
 
-  private PostService postService;
+  private final PostService postService;
 
   @PostMapping("")
   public void create(@RequestBody PostRequestDto postRequestDto){
