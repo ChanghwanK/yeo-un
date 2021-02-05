@@ -35,13 +35,6 @@ public class Request {
         }
     }
 
-    private void validateMemberId() {
-        if (this.header.getMemberId() == null) {
-            String msg = "Null userid in header";
-            throw new InvalidRequestFormatException(msg);
-        }
-    }
-
     public void validatePayload() {
         if (getPayload() == null) {
             String msg = "Null payload";
