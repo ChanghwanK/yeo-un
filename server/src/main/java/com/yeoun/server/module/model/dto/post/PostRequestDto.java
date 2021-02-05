@@ -4,11 +4,16 @@ import com.yeoun.server.module.model.domain.Category;
 import com.yeoun.server.module.model.domain.Member;
 import com.yeoun.server.module.model.domain.Post;
 import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Getter
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Data
 public class PostRequestDto {
 
     private String title;

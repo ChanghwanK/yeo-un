@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class CommentSaveRequest {
 
+  private Long postId;
   private String content;
   private String name;
 
