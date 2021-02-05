@@ -18,12 +18,14 @@ public class PostRequestDto {
     private String content;
     private Long categoryId;
     private Long memberId;
+    private String imgUrl;
 
     public Post toEntity(PostRequestDto postRequestDto) {
         return Post.builder()
             .author(postRequestDto.getAuthor())
             .title(postRequestDto.getTitle())
             .content(postRequestDto.getContent())
+                .imgUrl(postRequestDto.getImgUrl())
             .build();
     }
 }
