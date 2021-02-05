@@ -7,10 +7,10 @@ import com.yeoun.server.infra.JsonBuilder;
 import com.yeoun.server.infra.exception.DuplicateUserException;
 import com.yeoun.server.infra.exception.member.MemberNotFoundException;
 import com.yeoun.server.module.model.domain.Member;
-import com.yeoun.server.module.model.domain.MemberType;
 import com.yeoun.server.module.model.dto.MemberSignUpDto;
 import com.yeoun.server.module.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -35,37 +36,6 @@ public class MemberService {
         return memberRepository.findAll(pageable);
     }
 
-    public String signIn(JsonNode payload) {
-        Member givenMember = buildUserFromJson(payload);
-        Member expectedMember = findOptionalUserById(givenMember.getId());
-        return buildUserSignInJsonResponse(expectedMember);
-    }
-
-    private Member buildUserFromJson(JsonNode payload) {
-        return Member.builder()
-                .memberId(payload.get("memberId").asLong())
-                .email(payload.get("email").asText())
-                .password(payload.get("password").asText())
-                .name(payload.get("name").asText())
-                .nickname(payload.get("nickname").asText())
-                .profileImage(payload.get("profileImage").asText())
-                .phone(payload.get("phone").asText())
-                .memberType(MemberType.valueOf(payload.get("memberType").asText()))
-                .build();
-    }
-
-    private Member findOptionalUserById(Long memberId) {
-        return memberRepository.findById(memberId)
-                .orElseThrow(MemberNotFoundException::new);
-    }
-
-    private String buildUserSignInJsonResponse(Member member) {
-        return jsonBuilder.buildJsonWithHeaderAndPayload(
-                jsonBuilder.buildResponseHeader("SignInResponse", Long.toString(member.getId())),
-                jsonBuilder.buildResponsePayloadFromText("name", member.getName())
-        );
-    }
-
     @Transactional
     public String signUp(JsonNode payload) throws JsonProcessingException {
         Member member = saveNewMember(payload);
@@ -75,6 +45,8 @@ public class MemberService {
     @Transactional
     public Member saveNewMember(JsonNode payload) throws JsonProcessingException {
         MemberSignUpDto memberSignUpDto = objectMapper.treeToValue(payload, MemberSignUpDto.class);
+        log.info(memberSignUpDto.toString());
+
         memberSignUpDto.validateFieldsNotNull();
         checkDuplicateUser(memberSignUpDto);
         return memberRepository.save(memberSignUpDto.toEntity());
@@ -97,14 +69,35 @@ public class MemberService {
             throw new DuplicateUserException("email=" + email);
     }
 
-    public String signOut(Long memberId) {
-        Member member = findRequiredUserById(memberId);
-        memberRepository.save(member);
-        return jsonBuilder.buildJsonWithHeader("SignOutResponse", Long.toString(memberId));
+    public String signIn(JsonNode payload) {
+        Member givenMember = buildMemberFromJson(payload);
+        Member expectedMember = findOptionalUserByEmail(givenMember.getEmail());
+        return buildMemberSignInJsonResponse(expectedMember);
     }
 
-    private Member findRequiredUserById(Long memberId) {
-        return memberRepository.findById(memberId)
+    private Member buildMemberFromJson(JsonNode payload) {
+        return Member.builder()
+                .email(payload.get("email").asText())
+                .password(payload.get("password").asText())
+                .build();
+    }
+
+    private Member findOptionalUserByEmail(String email) {
+        return memberRepository.findByEmail(email)
                 .orElseThrow(MemberNotFoundException::new);
+    }
+
+    private String buildMemberSignInJsonResponse(Member member) {
+        return jsonBuilder.buildJsonWithHeaderAndPayload(
+                jsonBuilder.buildResponseHeader("SignInResponse", Long.toString(member.getId())),
+                jsonBuilder.buildResponsePayloadFromText("name", member.getName())
+        );
+    }
+
+    public String signOut(JsonNode payload) {
+        Member givenMember = buildMemberFromJson(payload);
+        Member member = findOptionalUserByEmail(givenMember.getEmail());
+        memberRepository.save(member);
+        return jsonBuilder.buildJsonWithHeader("SignOutResponse", Long.toString(member.getId()));
     }
 }
