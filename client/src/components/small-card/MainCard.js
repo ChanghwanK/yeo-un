@@ -1,12 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import { withRouter } from 'react-router-dom';
+
 import ImageContainer from 'components/small-card/ImageContainer';
 import ContentContainer from 'components/small-card/ContentsContainer';
 
-const Card = ({ title, content, category, image, hashtag }) => {
+const MainCard = (
+  props,
+  { title, content, category, image, hashtag, number },
+) => {
+  const onClickCard = () => {
+    props.history.push(`/post/${props.number}`);
+  };
+
   return (
-    <Container>
+    <Container onClick={onClickCard}>
       <ImageContainer image={image} />
       <ContentContainer
         title={title}
@@ -27,6 +36,7 @@ const Container = styled.div`
   width: 22vw;
   height: 23vw;
   margin: 10px;
+  cursor: pointer;
 `;
 
-export default Card;
+export default withRouter(MainCard);
