@@ -94,14 +94,10 @@ public class MemberService {
         );
     }
 
-    public String signOut(Long memberId) {
-        Member member = findRequiredUserById(memberId);
+    public String signOut(JsonNode payload) {
+        Member givenMember = buildMemberFromJson(payload);
+        Member member = findOptionalUserByEmail(givenMember.getEmail());
         memberRepository.save(member);
-        return jsonBuilder.buildJsonWithHeader("SignOutResponse", Long.toString(memberId));
-    }
-
-    private Member findRequiredUserById(Long memberId) {
-        return memberRepository.findById(memberId)
-                .orElseThrow(MemberNotFoundException::new);
+        return jsonBuilder.buildJsonWithHeader("SignOutResponse", Long.toString(member.getId()));
     }
 }

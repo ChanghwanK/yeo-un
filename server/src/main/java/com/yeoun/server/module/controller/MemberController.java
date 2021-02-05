@@ -49,7 +49,7 @@ public class MemberController {
         request.validateHeader("SignOutRequest");
 
         log.info(request.getPayload().toString());
-        String signOutResult = memberService.signOut(request.getHeader().getMemberId());
+        String signOutResult = memberService.signOut(request.getPayload());
         return new ResponseEntity<>(signOutResult, HttpStatus.OK);
     }
 }
