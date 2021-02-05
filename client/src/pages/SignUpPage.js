@@ -71,47 +71,58 @@ const SignUpPage = () => {
   return (
     <Container>
       <Logo />
-      <HeaderText>회원가입 페이지</HeaderText>
-      <Form>
-        <p>이메일</p>
-        <Input type="text" onChange={OnChangeIdInput} value={id} />
+      <HeaderText>Join yeo-un</HeaderText>
+      <Border>
+        <Form>
+          <p>이메일(Email)</p>
+          <Input type="text" onChange={OnChangeIdInput} value={id} />
 
-        <p>패스워드</p>
-        <Input type="password" onChange={OnChangePwInput} value={pw} />
+          <p>비밀번호(Password)</p>
+          <Input type="password" onChange={OnChangePwInput} value={pw} />
 
-        <p>패스워드 확인</p>
-        <Input
-          type="password"
-          onChange={OnChangeCheckPwInput}
-          value={checkPw}
-        />
-        {pw === checkPw ? '같아요' : '달라요'}
+          <p>비밀번호 확인(Confirm password)</p>
+          <Input
+            type="password"
+            onChange={OnChangeCheckPwInput}
+            value={checkPw}
+          />
+          <Boolpw>{pw === checkPw ? 'Correct' : 'Wrong'}</Boolpw>
+          <p>이름(Name)</p>
+          <Input type="text" onChange={OnChangeNameInput} value={name} />
 
-        <p>이름</p>
-        <Input type="text" onChange={OnChangeNameInput} value={name} />
+          <p>닉네임(Nickname)</p>
+          <Input
+            type="text"
+            onChange={OnChangeNicknameInput}
+            value={nickname}
+          />
 
-        <p>닉네임</p>
-        <Input type="text" onChange={OnChangeNicknameInput} value={nickname} />
+          <p>프로필 사진(Profile picture)</p>
+          <Input
+            type="file"
+            name="thumbnail"
+            accept="image/*,audio/*,video/mp4,video/x-m4v,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,.csv"
+            onChange={onChangeFile}
+          />
+          <Boolpw>
+            {profileImage ? (
+              <Image src={profileImage} alt="미리보기 이미지" />
+            ) : (
+              '썸네일을 올려주세요'
+            )}
+          </Boolpw>
 
-        <p>프로필 사진</p>
-        <Input
-          type="file"
-          name="thumbnail"
-          accept="image/*,audio/*,video/mp4,video/x-m4v,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,.csv"
-          onChange={onChangeFile}
-        />
-        {profileImage ? (
-          <Image src={profileImage} alt="미리보기 이미지" />
-        ) : (
-          '썸네일을 올려주세요'
-        )}
-
-        <p>전화번호</p>
-        <Input type="text" onChange={OnChangeNumberInput} value={phoneNumber} />
-        <div>
-          <Button onClick={onClickSignInButton}>가입하기</Button>
-        </div>
-      </Form>
+          <p>전화번호(Phone number)</p>
+          <Input
+            type="text"
+            onChange={OnChangeNumberInput}
+            value={phoneNumber}
+          />
+          <div>
+            <Button onClick={onClickSignInButton}>가입하기</Button>
+          </div>
+        </Form>
+      </Border>
     </Container>
   );
 };
@@ -119,7 +130,7 @@ const SignUpPage = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 120vh;
+  height: 140vh;
   justify-content: center;
   align-items: center;
 
@@ -128,10 +139,26 @@ const Container = styled.div`
   }
 `;
 
+const Border = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 130vh;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+`;
+
+const Boolpw = styled.p`
+  color: red;
+`;
+
 const Input = styled.input`
   border: 1px solid black;
   margin: 10px;
   padding: 10px;
+  border-radius: 5px;
+  background-color: white;
 `;
 
 const Button = styled.button`
@@ -139,6 +166,9 @@ const Button = styled.button`
   cursor: pointer;
   margin: 10px;
   padding: 10px;
+  border-radius: 5px;
+  background-color: #37373d;
+  color: white;
 `;
 
 const HeaderText = styled.p`
@@ -149,8 +179,8 @@ const HeaderText = styled.p`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: left;
 
   p {
     margin: 10px;

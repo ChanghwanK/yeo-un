@@ -42,7 +42,7 @@ const LoginPage = (props) => {
         <HeaderText>Welcome to Yeoun!</HeaderText>
         <Explain>로그인을 통해 서비스를 이용하실 수 있습니다.</Explain>
         <Cover>
-          <p>ID</p>
+          <p>Email</p>
           <Input type="text" onChange={onChangeIdInput} value={id} />
           <p>Password</p>
           <Input type="password" onChange={onChangePwInput} value={pw} />
