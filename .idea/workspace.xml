@@ -5,21 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc5f432f-07af-42f0-86a4-ec7ba1450f40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/infra/exception/comment/CommentNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/CommentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/comment/CommentSaveRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/comment/CommentUpdateRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/CommentRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/CommentService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/infra/handler/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/infra/handler/GlobalExceptionHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Category.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/PostRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/post/PostRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/PostUpdateDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/post/PostUpdateDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/CategoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/PostRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/PostRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/PostService.java" afterDir="false" />
     </list>
