@@ -84,32 +84,25 @@ const UploadForm = (props) => {
         />
         <DivideLine />
         <CategoryContainer contenxtState={state} contenxtAction={actions} />
-        {/* <DropDown
-          value={category}
-          onChange={onSelectCategory}
-          name="categories"
-        >
-          <Option value="movie">영화</Option>
-          <Option value="musical">뮤지컬</Option>
-          <Option value="book">책</Option>
-          <Option value="exhibition">전시회</Option>
-        </DropDown> */}
         <Contents
           onChange={onChangeContent}
           name="contents"
           placeholder="내용을 입력하세요"
         />
-        <p>썸네일</p>
-        <FileInput
-          type="file"
-          name="thumbnail"
-          accept="image/*,audio/*,video/mp4,video/x-m4v,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,.csv"
-          onChange={onChangeFile}
-        />
-        <div>
+        <FileInputContainer>
+          <FileButton for="file">썸네일 올리기</FileButton>
+          <FileInput
+            type="file"
+            id="file"
+            accept="image/*,audio/*,video/mp4,video/x-m4v,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,.csv"
+            onChange={onChangeFile}
+          />
+          <FileText value={file} placeholder="파일을 올려주세요" />
+        </FileInputContainer>
+        <ButtonContainer>
           <CancelButton onClick={onClickCancelButton}>돌아가기</CancelButton>
           <UploadButton onClick={onClickSubmitButton}>여운 남기기</UploadButton>
-        </div>
+        </ButtonContainer>
       </Form>
     </Container>
   );
@@ -121,6 +114,7 @@ const Container = styled.div`
   height: 100vh;
   width: 50%;
   align-items: center;
+  justify-content: stretch;
   @media only screen and (max-width: 1024px) {
     width: 100%;
   }
@@ -133,7 +127,7 @@ const Container = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: stretch;
   align-items: center;
   width: 98%;
 `;
@@ -145,17 +139,21 @@ const HeaderInput = styled.input`
   padding: 10px;
 `;
 
-const FileInput = styled.input`
-  margin: 10px;
-  padding: 10px;
-`;
-
 const Contents = styled.textarea`
   width: 97%;
   font-size: 2vw;
   resize: none;
   border: none;
   height: 500px;
+  background-color: #e6e6e6;
+  margin-top: 30px;
+  &: focus {
+    background-color: white;
+  }
+`;
+
+const ButtonContainer = styled.div`
+  margin: 50px;
 `;
 
 const UploadButton = styled.button`
@@ -206,8 +204,41 @@ const DivideLine = styled.hr`
   text-align: left;
 `;
 
-const DropDown = styled.select``;
+const FileInputContainer = styled.div`
+  display: flex;
+  width: 100%;
+`;
 
-const Option = styled.option``;
+const FileInput = styled.input`
+  display: none;
+`;
+
+const FileText = styled.input`
+  text-align: center;
+  border-radius: 4px;
+`;
+
+const FileButton = styled.label`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  width: 10vw;
+  height: 2vw;
+  min-width: 150px;
+  min-height: 25px;
+  border-radius: 7px;
+  font-size: 1.3vw;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  background-color: #2c353e;
+  color: white;
+`;
 
 export default withRouter(UploadForm);

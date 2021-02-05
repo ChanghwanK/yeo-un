@@ -29,7 +29,6 @@ const Category = ({ children, hashtag, contenxtState, contenxtAction }) => {
         e.target.innerHTML,
       ]);
     }
-    console.log(contenxtState.previewHashTag);
     setClicked(!clicked);
   };
 
