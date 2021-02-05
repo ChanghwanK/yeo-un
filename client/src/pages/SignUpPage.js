@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 import Logo from 'components/Logo';
 
 const URL = 'http://71771e855561.ngrok.io';
 
-const SignUpPage = () => {
+const SignUpPage = (props) => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [checkPw, setCheckPw] = useState('');
@@ -84,7 +85,12 @@ const SignUpPage = () => {
       },
       headers: headers,
     }).then((res) => {
-      console.log(res);
+      if (res.status === 200) {
+        alert('회원가입 되었습니다.');
+        props.history.push('/');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
     });
   };
 
@@ -214,4 +220,4 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-export default SignUpPage;
+export default withRouter(SignUpPage);

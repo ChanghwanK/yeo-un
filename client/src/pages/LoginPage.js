@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+import LoginContext from 'contexts/LoginContext';
 import Logo from 'components/Logo';
-import { Checkbox } from '@material-ui/core';
-
-const URL = 'http://493600167198.ngrok.io';
 
 const LoginPage = (props) => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
+
+  const [state, action] = useContext(LoginContext);
 
   const onChangeIdInput = (e) => {
     setId(e.target.value);
@@ -25,16 +25,34 @@ const LoginPage = (props) => {
   };
 
   const onClickLoginButton = () => {
+    const data = {
+      email: id,
+      password: pw,
+    };
+
+    const headers = {
+      'Content-Type': `application/json`,
+      'Access-Control-Allow-Origin': '*',
+    };
+
     if (id !== '' && pw !== '') {
       axios({
-        url: `${URL}/api/member/sign-in`,
-        method: 'post',
-        Member: {
-          email: id,
-          password: pw,
+        url: `/api/member/sign-in`,
+        method: 'put',
+        data: {
+          header: { name: 'SignInRequest' },
+          payload: data,
         },
+        headers: headers,
       }).then((res) => {
-        console.log(res);
+        if (res.status === 200) {
+          alert('로그인 됐습니다.');
+          action.setLogined(true);
+          window.localStorage.setItem('id', id);
+          props.history.push('/');
+        } else {
+          alert('로그인에 실패했습니다.');
+        }
       });
     }
   };
@@ -52,7 +70,7 @@ const LoginPage = (props) => {
           <Input type="password" onChange={onChangePwInput} value={pw} />
 
           <div>
-            <Button>Sign in</Button>
+            <Button onClick={onClickLoginButton}>Sign in</Button>
             <Button onClick={onClickSignInButton}>Join</Button>
           </div>
         </Cover>

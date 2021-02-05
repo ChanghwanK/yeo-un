@@ -34,7 +34,7 @@ const UploadForm = (props) => {
       content: contents,
       categoryId: Number(state.categoryNumber),
       memberId: 1,
-      thumbnail: fileURL,
+      imgUrl: fileURL,
     };
 
     const headers = {

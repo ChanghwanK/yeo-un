@@ -2,18 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Category from 'components/categories/Category';
 
-const categoryContent = [
-  '전시회',
-  '공연',
-  '영화',
-  '음악',
-  '연극',
-  '사진',
-  '독서',
-  '운동',
-  '댄스',
-  '미술',
-];
+const categoryContent = ['영화', '운동', '여가', '전시', '작품'];
 
 const hashtagContent = [
   '힐링',

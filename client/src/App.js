@@ -4,15 +4,18 @@ import GlobalStyle from 'styles/GlobalStyle';
 import Routes from 'routes/Route';
 import { UploadProvider } from 'contexts/UploadContext';
 import { CardProvider } from 'contexts/CardContext';
+import { LoginProvider } from 'contexts/LoginContext';
 
 const App = () => {
   return (
     <UploadProvider>
       <CardProvider>
-        <AppContainer>
-          <GlobalStyle />
-          <Routes />
-        </AppContainer>
+        <LoginProvider>
+          <AppContainer>
+            <GlobalStyle />
+            <Routes />
+          </AppContainer>
+        </LoginProvider>
       </CardProvider>
     </UploadProvider>
   );

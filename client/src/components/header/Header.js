@@ -1,27 +1,41 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import LoginContext from 'contexts/LoginContext';
 import SearchInput from 'components/header/searchbox/SearchInput';
 import Logo from 'images/logo.png';
 
 const Header = () => {
+  const [state, action] = useContext(LoginContext);
+
+  const onClickLogOutButton = () => {
+    action.setLogined(false);
+    window.localStorage.removeItem('id');
+    alert('로그아웃 되었습니다.');
+  };
+
   return (
     <Container>
       <Left>
         <LogoContainer src={Logo} alt="logo" />
-        <p>
-          <Link to="/upload">여운 올리기</Link>
-        </p>
+        {window.localStorage.getItem('id') ? (
+          <p>
+            <Link to="/upload">여운 올리기</Link>
+          </p>
+        ) : (
+          ''
+        )}
       </Left>
       <Right>
         <SearchInput />
-        {/* 로그인이 되었으면 다른 것으로 변경해서 보여줘야함
-            login ? 로그인 : 로그아웃
-        */}
-        <p>
-          <Link to="/login">로그인</Link>
-        </p>
+        {window.localStorage.getItem('id') ? (
+          <LogOutButton onClick={onClickLogOutButton}>로그아웃</LogOutButton>
+        ) : (
+          <p>
+            <Link to="/login">로그인</Link>
+          </p>
+        )}
       </Right>
     </Container>
   );
@@ -65,5 +79,7 @@ const LogoContainer = styled.img`
   height: 100px;
   object-fit: cover;
 `;
+
+const LogOutButton = styled.button``;
 
 export default Header;
