@@ -21,8 +21,6 @@ public class MemberSignUpDto {
     private MemberType memberType;
 
     public void validateFieldsNotNull() {
-        if (id == null)
-            throw new InvalidRequestParameterException("Invalid memberId");
         if (email == null)
             throw new InvalidRequestParameterException("Invalid email");
         if (password == null)

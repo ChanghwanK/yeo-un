@@ -19,7 +19,6 @@ public class Request {
     public void validateHeader(String expectedName) {
         validateNotNull();
         validateName(expectedName);
-        validateMemberId();
     }
 
     private void validateNotNull() {
