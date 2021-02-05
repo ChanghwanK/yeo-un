@@ -142,9 +142,10 @@ const SignUpPage = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 140vh;
+  height: 100%;
   justify-content: center;
   align-items: center;
+  margin: 50px 0;
 
   p {
     margin: 10px;
@@ -156,7 +157,7 @@ const Border = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 130vh;
+  height: 100%;
   background-color: #f7f7f7;
   border-radius: 10px;
 `;
