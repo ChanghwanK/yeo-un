@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import UploadContext from 'contexts/UploadContext';
+import Card from 'components/small-card/Card';
 
 const ResultPreview = () => {
   const [state, actions] = useContext(UploadContext);
 
   return (
     <Container>
-      <div>
-        <p>{state.previewCategory}</p>
-        <p>{state.previewTitle}</p>
-        <p>{state.previewContent}</p>
-        <img src={state.previewThumbnail} alt="미리보기" />
-      </div>
+      <Card
+        title={state.previewTitle}
+        category={state.previewCategory}
+        content={state.previewContent}
+        image={state.previewThumbnail}
+      />
     </Container>
   );
 };
@@ -25,12 +26,6 @@ const Container = styled.div`
   width: 50vw;
   height: 100vh;
   background-color: #f7f7f7;
-
-  img {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-  }
 `;
 
 export default ResultPreview;

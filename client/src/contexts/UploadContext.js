@@ -9,10 +9,10 @@ const UploadContext = createContext({
     content: '',
   },
   actions: {
-    setTitle: () => {},
-    setCategory: () => {},
-    setThumbnail: () => {},
-    setContent: () => {},
+    setPreviewTitle: () => {},
+    setPreviewCategory: () => {},
+    setPreviewThumbnail: () => {},
+    setPreviewContent: () => {},
   },
 });
 
