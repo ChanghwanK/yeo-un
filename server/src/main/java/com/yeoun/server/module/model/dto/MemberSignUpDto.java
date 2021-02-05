@@ -48,10 +48,12 @@ public class MemberSignUpDto {
     public Member toEntity() {
         return Member.builder()
                 .password(password)
+                .email(email)
                 .name(name)
                 .nickname(nickname)
                 .profileImage(profileImage)
                 .phone(phone)
+                .memberType(memberType)
                 .build();
     }
 }

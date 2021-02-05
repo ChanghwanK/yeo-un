@@ -36,6 +36,39 @@ public class MemberService {
         return memberRepository.findAll(pageable);
     }
 
+    @Transactional
+    public String signUp(JsonNode payload) throws JsonProcessingException {
+        Member member = saveNewMember(payload);
+        return jsonBuilder.buildJsonWithHeader("SignUpResponse", Long.toString(member.getId()));
+    }
+
+    @Transactional
+    public Member saveNewMember(JsonNode payload) throws JsonProcessingException {
+        MemberSignUpDto memberSignUpDto = objectMapper.treeToValue(payload, MemberSignUpDto.class);
+        log.info(memberSignUpDto.toString());
+
+        memberSignUpDto.validateFieldsNotNull();
+        checkDuplicateUser(memberSignUpDto);
+        return memberRepository.save(memberSignUpDto.toEntity());
+    }
+
+    private void checkDuplicateUser(MemberSignUpDto memberSignUpDto) {
+        validateDuplicateId(memberSignUpDto.getId());
+        validateDuplicateEmail(memberSignUpDto.getEmail());
+    }
+
+    private void validateDuplicateId(Long memberId) {
+        Optional<Member> foundMembers = memberRepository.findById(memberId);
+        if (foundMembers.isPresent())
+            throw new DuplicateUserException("memberId=" + memberId);
+    }
+
+    private void validateDuplicateEmail(String email) {
+        Optional<Member> foundMembers = memberRepository.findByEmail(email);
+        if (!foundMembers.isEmpty())
+            throw new DuplicateUserException("email=" + email);
+    }
+
     public String signIn(JsonNode payload) {
         Member givenMember = buildMemberFromJson(payload);
         Member expectedMember = findOptionalUserByEmail(givenMember.getEmail());
@@ -59,38 +92,6 @@ public class MemberService {
                 jsonBuilder.buildResponseHeader("SignInResponse", Long.toString(member.getId())),
                 jsonBuilder.buildResponsePayloadFromText("name", member.getName())
         );
-    }
-
-    @Transactional
-    public String signUp(JsonNode payload) throws JsonProcessingException {
-        Member member = saveNewMember(payload);
-        return jsonBuilder.buildJsonWithHeader("SignUpResponse", Long.toString(member.getId()));
-    }
-
-    @Transactional
-    public Member saveNewMember(JsonNode payload) throws JsonProcessingException {
-        MemberSignUpDto memberSignUpDto = objectMapper.treeToValue(payload, MemberSignUpDto.class);
-        log.info(memberSignUpDto.toString());
-        memberSignUpDto.validateFieldsNotNull();
-        checkDuplicateUser(memberSignUpDto);
-        return memberRepository.save(memberSignUpDto.toEntity());
-    }
-
-    private void checkDuplicateUser(MemberSignUpDto memberSignUpDto) {
-        validateDuplicateId(memberSignUpDto.getId());
-        validateDuplicateEmail(memberSignUpDto.getEmail());
-    }
-
-    private void validateDuplicateId(Long memberId) {
-        Optional<Member> foundMembers = memberRepository.findById(memberId);
-        if (foundMembers.isPresent())
-            throw new DuplicateUserException("memberId=" + memberId);
-    }
-
-    private void validateDuplicateEmail(String email) {
-        Optional<Member> foundMembers = memberRepository.findByEmail(email);
-        if (!foundMembers.isEmpty())
-            throw new DuplicateUserException("email=" + email);
     }
 
     public String signOut(Long memberId) {
