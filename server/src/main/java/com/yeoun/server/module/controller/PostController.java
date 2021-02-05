@@ -1,8 +1,8 @@
 package com.yeoun.server.module.controller;
 
-import com.yeoun.server.module.model.dto.PostUpdateDto;
+import com.yeoun.server.module.model.dto.post.PostUpdateDto;
 import com.yeoun.server.module.model.domain.Post;
-import com.yeoun.server.module.model.dto.PostRequestDto;
+import com.yeoun.server.module.model.dto.post.PostRequestDto;
 import com.yeoun.server.module.service.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -32,9 +32,9 @@ public class PostController {
     postService.create(postRequestDto);
   }
 
-  @GetMapping("")
-  public Post read(Long id) {
-    return postService.findById(id);
+  @GetMapping("/{category-id}")
+  public Post read(@PathVariable(name = "category-id") Long categoryId) {
+    return postService.findById(categoryId);
   }
 
   public void update(@RequestBody PostUpdateDto updateDto, Long id) {
@@ -45,4 +45,5 @@ public class PostController {
   public void delete(@PathVariable Long id) {
     postService.delete(id);
   }
+
 }

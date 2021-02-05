@@ -1,10 +1,9 @@
-package com.yeoun.server.module.model.dto;
+package com.yeoun.server.module.model.dto.post;
 
 import com.yeoun.server.module.model.domain.Category;
 import com.yeoun.server.module.model.domain.Member;
 import com.yeoun.server.module.model.domain.Post;
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -18,12 +17,11 @@ public class PostRequestDto {
     private Long categoryId;
     private Long memberId;
 
-    public Post toEntity(PostRequestDto postRequestDto, Category category, Member member) {
+    public Post toEntity(PostRequestDto postRequestDto) {
         return Post.builder()
+            .author(postRequestDto.getAuthor())
             .title(postRequestDto.getTitle())
             .content(postRequestDto.getContent())
-            .category(category)
-            .member(member)
             .build();
     }
 }
