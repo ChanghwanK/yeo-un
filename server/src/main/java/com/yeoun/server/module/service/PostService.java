@@ -54,7 +54,7 @@ public class PostService {
     * 카테고리별 페이징 적용 기존의 findAll 삭제
     */
     public Page<Post> findAllByCategoryId(Pageable pageable, Long categoryId) {
-      return postRepository.findAllByCategoryId(categoryId);
+      return postRepository.findAllByCategoryId(pageable, categoryId);
     }
 
   /**
