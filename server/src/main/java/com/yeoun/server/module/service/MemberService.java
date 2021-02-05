@@ -11,6 +11,7 @@ import com.yeoun.server.module.model.domain.MemberType;
 import com.yeoun.server.module.model.dto.MemberSignUpDto;
 import com.yeoun.server.module.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -18,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
@@ -36,12 +38,12 @@ public class MemberService {
     }
 
     public String signIn(JsonNode payload) {
-        Member givenMember = buildUserFromJson(payload);
+        Member givenMember = buildMemberFromJson(payload);
         Member expectedMember = findOptionalUserById(givenMember.getId());
-        return buildUserSignInJsonResponse(expectedMember);
+        return buildMemberSignInJsonResponse(expectedMember);
     }
 
-    private Member buildUserFromJson(JsonNode payload) {
+    private Member buildMemberFromJson(JsonNode payload) {
         return Member.builder()
                 .memberId(payload.get("memberId").asLong())
                 .email(payload.get("email").asText())
@@ -59,7 +61,7 @@ public class MemberService {
                 .orElseThrow(MemberNotFoundException::new);
     }
 
-    private String buildUserSignInJsonResponse(Member member) {
+    private String buildMemberSignInJsonResponse(Member member) {
         return jsonBuilder.buildJsonWithHeaderAndPayload(
                 jsonBuilder.buildResponseHeader("SignInResponse", Long.toString(member.getId())),
                 jsonBuilder.buildResponsePayloadFromText("name", member.getName())
@@ -75,6 +77,7 @@ public class MemberService {
     @Transactional
     public Member saveNewMember(JsonNode payload) throws JsonProcessingException {
         MemberSignUpDto memberSignUpDto = objectMapper.treeToValue(payload, MemberSignUpDto.class);
+        log.info(memberSignUpDto.toString());
         memberSignUpDto.validateFieldsNotNull();
         checkDuplicateUser(memberSignUpDto);
         return memberRepository.save(memberSignUpDto.toEntity());

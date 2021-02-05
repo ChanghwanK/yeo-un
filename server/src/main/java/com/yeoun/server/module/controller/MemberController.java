@@ -25,6 +25,7 @@ public class MemberController {
         request.validateHeader("SignUpRequest");
         request.validatePayload();
 
+        log.info(request.getPayload().toString());
         String signUpResult = memberService.signUp(request.getPayload());
         return new ResponseEntity<>(signUpResult, HttpStatus.OK);
     }
@@ -36,6 +37,7 @@ public class MemberController {
         request.validateHeader("SignInRequest");
         request.validatePayload();
 
+        log.info(request.getPayload().toString());
         String signInResult = memberService.signIn(request.getPayload());
         return new ResponseEntity<>(signInResult, HttpStatus.OK);
     }
@@ -46,6 +48,7 @@ public class MemberController {
         log.info("[Request] member-sign-out");
         request.validateHeader("SignOutRequest");
 
+        log.info(request.getPayload().toString());
         String signOutResult = memberService.signOut(request.getHeader().getMemberId());
         return new ResponseEntity<>(signOutResult, HttpStatus.OK);
     }
