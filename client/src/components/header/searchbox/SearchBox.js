@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 
-const SearchBox = ({ isBoxOpened }) => {
-  return <Container open={isBoxOpened}>hi</Container>;
+import CardContext from 'contexts/CardContext';
+
+const SearchBox = ({ isBoxOpened, value }) => {
+  const [state, action] = useContext(CardContext);
+
+  return (
+    <Container open={isBoxOpened}>
+      {state.allCard ? <div>데이터 받기 성공</div> : ''}
+    </Container>
+  );
 };
 
 const Container = styled.div`
@@ -11,8 +19,8 @@ const Container = styled.div`
   height: ${(props) => (props.open ? '240px' : '0px')};
   opacity: ${(props) => (props.open ? '1' : '0')};
   border: ${(props) => (props.open ? '1px solid #75d5d5' : '0px solid white')};
-  width: 30vw;
-  top: 53px;
+  width: 28vw;
+  top: 70px;
   background-color: white;
   padding: 5px;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.13);

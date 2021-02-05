@@ -41,5 +41,6 @@ module.exports = {
     'react/jsx-boolean-value': 0,
     'consistent-return': 0,
     'object-shorthand': 0,
+    'array-callback-return': 0,
   },
 };

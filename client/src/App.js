@@ -3,14 +3,17 @@ import styles from 'styled-components';
 import GlobalStyle from 'styles/GlobalStyle';
 import Routes from 'routes/Route';
 import { UploadProvider } from 'contexts/UploadContext';
+import { CardProvider } from 'contexts/CardContext';
 
 const App = () => {
   return (
     <UploadProvider>
-      <AppContainer>
-        <GlobalStyle />
-        <Routes />
-      </AppContainer>
+      <CardProvider>
+        <AppContainer>
+          <GlobalStyle />
+          <Routes />
+        </AppContainer>
+      </CardProvider>
     </UploadProvider>
   );
 };
