@@ -18,7 +18,7 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PostMapping(value = "/sign-up", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PutMapping(value = "/sign-up", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> signUp(@RequestBody Request request) throws JsonProcessingException {
 
         log.info("[Request] member-sign-up");

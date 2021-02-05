@@ -60,7 +60,7 @@ public class PostService {
    * 상세 조회시 post에 comment가 같이 내려감
    */
     public Post findById(Long postId) {
-        List<Comment> comments = categoryRepository.findByPostId(postId);
+        List<Comment> comments = commentRepository.findByPostId(postId);
 
         Post post = postRepository.findById(postId).orElseThrow(PostNotFoundException::new);
         post.setComments(comments);
