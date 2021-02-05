@@ -108,6 +108,10 @@ const Button = styled.button`
   padding: 10px;
   text-align: center;
   color: white;
+
+  &:hover {
+    background-color: #a9a9a9;
+  }
 `;
 
 const HeaderText = styled.p`

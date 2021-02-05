@@ -4,8 +4,6 @@ import axios from 'axios';
 
 import Logo from 'components/Logo';
 
-const URL = 'http://493600167198.ngrok.io';
-
 const SignUpPage = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
@@ -51,33 +49,23 @@ const SignUpPage = () => {
 
   const onClickSignInButton = (e) => {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append('name', name);
-    // formData.append('password', pw);
-    // formData.append('email', id);
-    // formData.append('phone', phoneNumber);
-    // formData.append('profileImage', profileImage);
-    // formData.append('nickname', nickname);
-    const data = {
-      name: name,
-      password: pw,
-      email: id,
-      phone: phoneNumber,
-      profileImage: profileImage,
-      nickname: nickname,
-    };
 
-    axios({
-      method: 'post',
-      url: `${URL}/api/member/sign-up`,
-      Member: JSON.stringify(data),
-      headers: {
-        'Content-Type': `application/json`,
-        'Access-Control-Allow-Origin': '*',
-      },
-    }).then((res) => {
-      console.log(res);
-    });
+    const formData = new FormData();
+    formData.append('email', id);
+    formData.append('password', pw);
+    formData.append('name', name);
+    formData.append('nickname', nickname);
+    formData.append('profile_image', profileImage);
+    formData.append('phone', phoneNumber);
+
+    console.log(id, pw, name, nickname, profileImage, phoneNumber);
+
+    // axios({
+    //   method: 'post',
+    //   url: '/api/dd',
+    //   data: formData,
+    //   headers: { 'Content-Type': 'multipart/form-data' },
+    // });
   };
 
   return (
@@ -142,9 +130,10 @@ const SignUpPage = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 140vh;
+  height: 100%;
   justify-content: center;
   align-items: center;
+  margin: 50px 0;
 
   p {
     margin: 10px;
@@ -156,7 +145,7 @@ const Border = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 130vh;
+  height: 100%;
   background-color: #f7f7f7;
   border-radius: 10px;
 `;
@@ -166,11 +155,14 @@ const Boolpw = styled.p`
 `;
 
 const Input = styled.input`
-  border: 1px solid black;
+  border: 1px solid #8f8f8f;
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
   background-color: white;
+  &:hover {
+    border: 1px solid #181825;
+  }
 `;
 
 const Button = styled.button`
