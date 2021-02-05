@@ -29,6 +29,9 @@ public class Post extends BaseTimeEntity {
     private String title;
     private String content;
 
+    @Column(name = "thumbnail_url")
+    private String thumbnailUrl;
+
     @Column(name = "like_count")
     private int likeCount;
 
@@ -53,11 +56,14 @@ public class Post extends BaseTimeEntity {
     public Post(String title,
                 String author,
                 String content,
+                String thumbnailUrl,
                 Member member,
                 Category category,
                 Image... images) {
         this.title = title;
+        this.author = author;
         this.content = content;
+        this.thumbnailUrl = thumbnailUrl;
         this.likeCount = 0;
         this.viewCount = 0;
         this.member = member;
