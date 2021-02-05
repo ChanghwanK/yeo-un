@@ -50,7 +50,7 @@ const CategoryContainer = ({ contextState, contextAction }) => {
               contextAction={contextAction}
               hashtag={false}
               key={i}
-              idx={idx}
+              idx={idx + 1}
             >
               {i}
             </Category>

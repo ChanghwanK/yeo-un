@@ -71,26 +71,22 @@ const ContentContainer = ({
 };
 
 const Container = styled.div`
+  margin-top: 5px;
   display: flex;
   flex-direction: column;
-  background-color: #dcdcdc;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
   width: 100%;
-  height: 8vw;
+  height: 100%;
 `;
 
 const IconContainer = styled.div`
   display: flex;
-  padding: 0.5vw;
 `;
 
 const SmallTextContainer = styled.div`
   display: flex;
-  padding-left: 1vw;
 
   span {
-    font-size: 0.6vw;
+    font-size: 0.8vw;
     & {
       margin: 2px;
     }
@@ -100,12 +96,10 @@ const SmallTextContainer = styled.div`
 const TitleText = styled.p`
   font-size: 1.4vw;
   font-weight: 550;
-  padding-left: 1vw;
 `;
 
 const BottomTextContainer = styled.div`
   display: flex;
-  padding-left: 1vw;
 
   span {
     font-size: 0.7vw;
@@ -114,7 +108,6 @@ const BottomTextContainer = styled.div`
 
 const BottomCategoryContainer = styled.div`
   display: flex;
-  padding-left: 1vw;
 `;
 
 export default ContentContainer;

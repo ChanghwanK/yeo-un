@@ -4,13 +4,13 @@ import axios from 'axios';
 
 import Logo from 'components/Logo';
 
-const URL = 'http://493600167198.ngrok.io';
+const URL = 'http://71771e855561.ngrok.io';
 
 const SignUpPage = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [checkPw, setCheckPw] = useState('');
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [nickname, setNickname] = useState('');
   const [profileImage, setProfileImage] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -28,7 +28,7 @@ const SignUpPage = () => {
   };
 
   const OnChangeNameInput = (e) => {
-    setName(e.target.value);
+    setUsername(e.target.value);
   };
 
   const OnChangeNicknameInput = (e) => {
@@ -59,22 +59,30 @@ const SignUpPage = () => {
     // formData.append('profileImage', profileImage);
     // formData.append('nickname', nickname);
     const data = {
-      name: name,
+      name: username,
       password: pw,
       email: id,
       phone: phoneNumber,
       profileImage: profileImage,
       nickname: nickname,
+      memberType: 'USER',
     };
 
+    const headers = {
+      'Content-Type': `application/json`,
+      'Access-Control-Allow-Origin': '*',
+    };
+
+    console.log(JSON.stringify(data));
+
     axios({
-      method: 'post',
-      url: `${URL}/api/member/sign-up`,
-      Member: JSON.stringify(data),
-      headers: {
-        'Content-Type': `application/json`,
-        'Access-Control-Allow-Origin': '*',
+      method: 'put',
+      url: `/api/member/sign-up`,
+      data: {
+        header: { name: 'SignUpRequest' },
+        payload: data,
       },
+      headers: headers,
     }).then((res) => {
       console.log(res);
     });
@@ -100,7 +108,7 @@ const SignUpPage = () => {
           />
           <Boolpw>{pw === checkPw ? 'Correct' : 'Wrong'}</Boolpw>
           <p>이름(Name)</p>
-          <Input type="text" onChange={OnChangeNameInput} value={name} />
+          <Input type="text" onChange={OnChangeNameInput} value={username} />
 
           <p>닉네임(Nickname)</p>
           <Input

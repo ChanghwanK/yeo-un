@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 import SearchInput from 'components/header/searchbox/SearchInput';
+import Logo from 'images/logo.png';
 
 const Header = () => {
   return (
     <Container>
       <Left>
-        <p>로고</p>
+        <LogoContainer src={Logo} alt="logo" />
         <p>
           <Link to="/upload">여운 올리기</Link>
         </p>
@@ -35,15 +36,17 @@ const Container = styled.div`
   background-color: white;
   width: 100%;
   top: 0;
-  height: 64px;
+  height: 100px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.13), 0 3px 3px rgba(0, 0, 0, 0.13);
 `;
 
 const Left = styled.div`
   display: flex;
   padding-left: 30px;
+  justify-content: center;
+  align-items: center;
   p {
-    margin: 20px;
+    padding-left: 30px;
     cursor: pointer;
   }
 `;
@@ -55,6 +58,12 @@ const Right = styled.div`
     margin: 20px;
     cursor: pointer;
   }
+`;
+
+const LogoContainer = styled.img`
+  width: 200px;
+  height: 100px;
+  object-fit: cover;
 `;
 
 export default Header;

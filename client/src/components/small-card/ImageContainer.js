@@ -14,17 +14,21 @@ const ImageContainer = ({ image }) => {
 };
 
 const Container = styled.div`
+  display: flex;
   width: 100%;
-  height: 15vw;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
-
+  height: 100%;
+  max-height: 450px;
+  overflow: hidden;
   img {
     width: 100%;
     height: 100%;
-    border-top-right-radius: 15px;
-    border-top-left-radius: 15px;
     object-fit: cover;
+
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 `;
 
@@ -34,8 +38,6 @@ const NullImageContainer = styled.div`
   justify-content: center;
   width: 100%;
   height: 100%;
-  border-top-right-radius: 15px;
-  border-top-left-radius: 15px;
   background-color: #98999d;
 `;
 

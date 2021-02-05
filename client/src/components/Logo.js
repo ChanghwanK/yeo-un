@@ -3,10 +3,14 @@ import styled from 'styled-components';
 
 import { Link } from 'react-router-dom';
 
+import LogoImage from 'images/logo.png';
+
 const Logo = () => {
   return (
     <Container>
-      <Link to="/">로고</Link>
+      <Link to="/">
+        <LogoContainer src={LogoImage} alt="logo" />
+      </Link>
     </Container>
   );
 };
@@ -20,6 +24,12 @@ const Container = styled.div`
 
   font-size: 30px;
   cursor: pointer;
+`;
+
+const LogoContainer = styled.img`
+  widht: 200px;
+  height: 150px;
+  object-fit: cover;
 `;
 
 export default Logo;

@@ -21,10 +21,10 @@ const ResultPreview = () => {
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 50%;
-  height: 100vw;
+  height: 100vh;
   background-color: #f7f7f7;
 `;
 

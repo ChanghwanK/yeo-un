@@ -41,22 +41,23 @@ const UploadForm = (props) => {
       title: title,
       author: 'hyeonsu',
       content: contents,
-      likeCount: 0,
-      viewCount: 0,
-      category: state.categoryNumber,
+      categoryId: Number(state.categoryNumber),
+      memberId: 1,
       thumbnail: fileURL,
+    };
+
+    const headers = {
+      'Content-Type': `application/json`,
+      'Access-Control-Allow-Origin': '*',
     };
 
     console.log(data);
 
     axios({
-      method: 'post',
+      method: 'POST',
       url: `/api/posts`,
-      data: JSON.stringify(data),
-      headers: {
-        'Content-Type': `application/json`,
-        'Access-Control-Allow-Origin': '*',
-      },
+      data: data,
+      headers: headers,
     })
       .then((res) => {
         console.log(res);
@@ -134,7 +135,8 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: stretch;
   align-items: center;
-  width: 98%;
+  width: 100%;
+  height: 100%;
 `;
 
 const HeaderInput = styled.input`
@@ -146,7 +148,7 @@ const HeaderInput = styled.input`
 
 const Contents = styled.textarea`
   width: 97%;
-  font-size: 2vw;
+  font-size: 1.5vw;
   resize: none;
   border: none;
   height: 500px;

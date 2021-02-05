@@ -17,6 +17,12 @@ const Container = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 30px;
+
+  img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+  }
 `;
 
 export default SubHeaderItem;

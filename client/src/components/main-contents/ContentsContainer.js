@@ -42,15 +42,27 @@ const ContentsContainer = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 95%;
   margin-top: 50px;
 `;
 
 const FourCardContainer = styled.div`
-  display: flex;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  row-gap: 20px;
+
+  @media screen and (max-width: 1000px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media screen and (min-width: 1000px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 `;
 
 const TitleText = styled.h1`
-  font-size: 20px;
+  font-size: 30px;
   padding: 10px;
 `;
 

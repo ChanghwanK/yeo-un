@@ -6,10 +6,14 @@ import 'slick-carousel/slick/slick-theme.css';
 
 import SubHeaderItem from 'components/sub-header/SubHeaderItem';
 
+import SubHeader1 from 'images/subHeader1.png';
+import SubHeader2 from 'images/subHeader2.png';
+import SubHeader3 from 'images/subHeader3.png';
+
 const SubHeader = () => {
   const settings = {
     infinite: true,
-    speed: 1000,
+    speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
@@ -19,11 +23,15 @@ const SubHeader = () => {
   return (
     <Container>
       <Slider {...settings}>
-        <SubHeaderItem color="#4a5158">현수의 여운</SubHeaderItem>
-        <SubHeaderItem color="#9e9e9e">창환의 여운</SubHeaderItem>
-        <SubHeaderItem color="#e691ff">건비의 여운</SubHeaderItem>
-        <SubHeaderItem color="#ffd76d">정원의 여운</SubHeaderItem>
-        <SubHeaderItem color="#ff9c57">유성의 여운</SubHeaderItem>
+        <SubHeaderItem color="white">
+          <img src={SubHeader1} alt="이미지" />
+        </SubHeaderItem>
+        <SubHeaderItem color="white">
+          <img src={SubHeader2} alt="이미지" />
+        </SubHeaderItem>
+        <SubHeaderItem color="white">
+          <img src={SubHeader3} alt="이미지" />
+        </SubHeaderItem>
       </Slider>
     </Container>
   );
