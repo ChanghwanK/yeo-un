@@ -1,4 +1,4 @@
-package com.yeoun.server.module.model.dto;
+package com.yeoun.server.module.model.dto.post;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,11 +20,5 @@ public class PostUpdateDto {
 
   private String content;
   private Long categoryId;
-  /**
-   * todo
-   * - category 변경도 가능해야 해야 하는데 카테고리 ID를 어떻게 가져올까?
-   * - 매개 값으로 받으면 될까??
-   */
-
 
 }
