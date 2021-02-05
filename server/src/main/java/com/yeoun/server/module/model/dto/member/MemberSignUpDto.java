@@ -1,4 +1,4 @@
-package com.yeoun.server.module.model.dto;
+package com.yeoun.server.module.model.dto.member;
 
 import com.yeoun.server.infra.exception.InvalidRequestParameterException;
 import com.yeoun.server.module.model.domain.Member;

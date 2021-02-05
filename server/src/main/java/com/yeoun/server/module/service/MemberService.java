@@ -7,7 +7,7 @@ import com.yeoun.server.infra.JsonBuilder;
 import com.yeoun.server.infra.exception.DuplicateUserException;
 import com.yeoun.server.infra.exception.member.MemberNotFoundException;
 import com.yeoun.server.module.model.domain.Member;
-import com.yeoun.server.module.model.dto.MemberSignUpDto;
+import com.yeoun.server.module.model.dto.member.MemberSignUpDto;
 import com.yeoun.server.module.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
