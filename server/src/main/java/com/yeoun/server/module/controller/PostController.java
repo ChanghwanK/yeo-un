@@ -1,6 +1,6 @@
 package com.yeoun.server.module.controller;
 
-import com.yeoun.server.module.dto.PostUpdateDto;
+import com.yeoun.server.module.model.dto.PostUpdateDto;
 import com.yeoun.server.module.model.domain.Post;
 import com.yeoun.server.module.model.dto.PostRequestDto;
 import com.yeoun.server.module.service.PostService;
