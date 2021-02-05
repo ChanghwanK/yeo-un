@@ -1,16 +1,19 @@
 import React from 'react';
 import styles from 'styled-components';
 
-import Header from 'components/Header';
+import Header from 'components/header/Header';
+import SubHeader from 'components/sub-header/SubHeader';
+import ContentsContainer from 'components/main-contents/ContentsContainer';
+import Footer from 'components/main-footer/Footer';
 
 const MainPage = () => {
   return (
     <>
       <Header />
+      <SubHeader />
       <Container>
-        <p>
-          <strong>여운 - Yeo Un</strong>
-        </p>
+        <ContentsContainer />
+        <Footer />
       </Container>
     </>
   );
@@ -18,9 +21,8 @@ const MainPage = () => {
 
 const Container = styles.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  height: 100vh;
 `;
 
 export default MainPage;

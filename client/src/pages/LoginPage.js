@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 import Logo from 'components/Logo';
 
@@ -18,6 +19,19 @@ const LoginPage = (props) => {
 
   const onClickSignInButton = () => {
     props.history.push('/signin');
+  };
+
+  const onClickLoginButton = () => {
+    // if (id !== '' && pw !== '') {
+    //   axios({
+    //     // url: 'https://test/api/cafe/list/today',
+    //     method: 'post',
+    //     data: {
+    //       email: id,
+    //       password: pw,
+    //     },
+    //   });
+    // }
   };
 
   return (

@@ -29,8 +29,8 @@ const LoginPage = () => {
     formData.append('content', contents);
     formData.append('created_at', time);
     // formData.append('modified_at', );
-    // formData.append('like_count', );
-    // formData.append('view_count', );
+    formData.append('like_count', 0);
+    formData.append('view_count', 0);
     // formData.append('user_id', );
     formData.append('category_id', category);
     formData.append('thumbnail', fileURL);
@@ -57,10 +57,9 @@ const LoginPage = () => {
   return (
     <Container>
       <Logo />
-      <HeaderText>여운 올리기</HeaderText>
       <Form encType="multipart/form-data">
-        <p>제목</p>
-        <Input name="title" placeholder="제목을 입력하세요" type="text" />
+        <HeaderInput name="title" placeholder="제목을 입력하세요" type="text" />
+        <DivideLine />
         <p>카테고리</p>
         <DropDown
           value={category}
@@ -78,13 +77,12 @@ const LoginPage = () => {
         ) : (
           '썸네일을 올려주세요'
         )}
-        <Input
+        <FileInput
           type="file"
           name="thumbnail"
           accept="image/*,audio/*,video/mp4,video/x-m4v,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,.csv"
           onChange={onChangeFile}
         />
-        <p>컨텐츠</p>
         <Contents name="contents" placeholder="내용을 입력하세요" />
         <div>
           <Button onClick={onClickSubmitButton}>여운 남기기</Button>
@@ -95,29 +93,35 @@ const LoginPage = () => {
 };
 
 const Container = styled.div`
+  margin-top: 50px;
   display: flex;
   flex-direction: column;
-  height: 130vh;
-  justify-content: center;
+  height: 100vh;
   align-items: center;
-
   p {
     margin: 10px;
   }
 `;
 
-const Input = styled.input`
+const HeaderInput = styled.input`
+  font-size: 4vw;
+  width: 90vw;
+  margin: 10px;
+  padding: 10px;
+`;
+
+const FileInput = styled.input`
   border: 1px solid black;
   margin: 10px;
   padding: 10px;
 `;
 
 const Contents = styled.textarea`
-  width: 91%;
+  width: 90vw;
+  font-size: 3vw;
   resize: none;
   border: none;
   height: 500px;
-  border: 1px solid black;
 `;
 
 const Button = styled.button`
@@ -125,11 +129,6 @@ const Button = styled.button`
   cursor: pointer;
   margin: 10px;
   padding: 10px;
-`;
-
-const HeaderText = styled.p`
-  font-size: 18px;
-  font-weight: 600;
 `;
 
 const Form = styled.form`
@@ -147,6 +146,14 @@ const Image = styled.img`
   width: 100px;
   height: 100px;
   object-fit: cover;
+`;
+
+const DivideLine = styled.hr`
+  width: 10vw;
+  height: 7px;
+  border: 1px solid #4a5158;
+  background-color: #4a5158;
+  text-align: left;
 `;
 
 const DropDown = styled.select``;

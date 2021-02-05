@@ -36,5 +36,6 @@ module.exports = {
     'react/destructuring-assignment': 0,
     'no-unused-vars': 0,
     'dot-notation': 0,
+    'react/jsx-props-no-spreading': 0,
   },
 };
