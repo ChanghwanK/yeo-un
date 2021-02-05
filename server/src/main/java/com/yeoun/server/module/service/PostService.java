@@ -78,7 +78,7 @@ public class PostService {
   /**
    * 전체 조회를 위한 메서드 입니다.
    */
-  @Transactional
+    @Transactional
     public List<Post> findAll() {
       return postRepository.findAll();
     }
