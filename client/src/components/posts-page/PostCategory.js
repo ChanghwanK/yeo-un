@@ -18,9 +18,11 @@ const Container = styled.div`
   background-color: #f7f8f9;
   border-radius: 30px;
   width: 80%;
-  height: 50px;
+  height: 30px;
   justify-content: center;
   align-items: center;
+  border: 1px solid black;
+  margin: 0px 10px 0px 0px;
 
   ${(props) => {
     if (props.click) {

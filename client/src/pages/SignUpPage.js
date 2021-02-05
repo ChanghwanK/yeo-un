@@ -5,9 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import Logo from 'components/Logo';
 
-const URL = 'http://71771e855561.ngrok.io';
-
-const SignUpPage = (props) => {
+const SignUpPage = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [checkPw, setCheckPw] = useState('');
@@ -177,15 +175,18 @@ const Border = styled.div`
 `;
 
 const Boolpw = styled.p`
-  color: red;
+  color: blue;
 `;
 
 const Input = styled.input`
-  border: 1px solid black;
+  border: 1px solid #8f8f8f;
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
   background-color: white;
+  &:hover {
+    border: 1px solid #181825;
+  }
 `;
 
 const Button = styled.button`
@@ -196,6 +197,9 @@ const Button = styled.button`
   border-radius: 5px;
   background-color: #37373d;
   color: white;
+  &:hover {
+    background-color: #a9a9a9;
+  }
 `;
 
 const HeaderText = styled.p`
