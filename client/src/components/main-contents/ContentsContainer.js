@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Card from 'components/main-contents/Card';
+import Card from 'components/small-card/Card';
 // import CardContainer from 'components/main-contents/CardContainer';
 
 const ContentsContainer = () => {

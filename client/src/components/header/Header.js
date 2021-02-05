@@ -10,7 +10,7 @@ const Header = () => {
       <Left>
         <p>로고</p>
         <p>
-          <Link to="/yeoun/upload">여운 올리기</Link>
+          <Link to="/upload">여운 올리기</Link>
         </p>
       </Left>
       <Right>
