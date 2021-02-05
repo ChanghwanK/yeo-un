@@ -19,7 +19,7 @@ public class Request {
     public void validateHeader(String expectedName) {
         validateNotNull();
         validateName(expectedName);
-        validateUserId();
+        validateMemberId();
     }
 
     private void validateNotNull() {
@@ -36,8 +36,8 @@ public class Request {
         }
     }
 
-    private void validateUserId() {
-        if (this.header.getUserId() == null) {
+    private void validateMemberId() {
+        if (this.header.getMemberId() == null) {
             String msg = "Null userid in header";
             throw new InvalidRequestFormatException(msg);
         }

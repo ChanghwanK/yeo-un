@@ -26,7 +26,7 @@ public class Member extends BaseTimeEntity {
     private String profileImage;
     private String phone;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private MemberType memberType;
 
     @OneToMany(mappedBy = "member")
@@ -36,17 +36,21 @@ public class Member extends BaseTimeEntity {
     private List<Liked> likedList = new ArrayList<>();
 
     @Builder
-    public Member(String email,
+    public Member(Long memberId,
+                  String email,
                   String password,
                   String name,
                   String nickname,
                   String profileImage,
-                  String phone) {
+                  String phone,
+                  MemberType memberType) {
+        this.id = memberId;
         this.email = email;
         this.password = password;
         this.name = name;
         this.nickname = nickname;
         this.profileImage = profileImage;
         this.phone = phone;
+        this.memberType = memberType;
     }
 }
