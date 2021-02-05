@@ -12,7 +12,7 @@ const Container = styled.div`
   background-color: #4a5158;
   height: 300px;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 100px;
 `;
 
 export default Footer;

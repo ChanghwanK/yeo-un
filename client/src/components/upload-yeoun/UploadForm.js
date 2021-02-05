@@ -28,15 +28,6 @@ const UploadForm = (props) => {
     const title = document.getElementsByName('title')[0].value.trim();
     const contents = document.getElementsByName('contents')[0].value.trim();
 
-    // const formData = new FormData();
-    // formData.append('title', title);
-    // formData.append('author', 'hyeonsu');
-    // formData.append('content', contents);
-    // formData.append('likeCount', 0);
-    // formData.append('viewCount', 0);
-    // formData.append('category', nowCategory);
-    // formData.append('thumbnail', fileURL);
-
     const data = {
       title: title,
       author: 'hyeonsu',

@@ -94,8 +94,8 @@ const SmallTextContainer = styled.div`
 `;
 
 const TitleText = styled.p`
-  font-size: 1.4vw;
-  font-weight: 550;
+  font-size: 1.5vw;
+  font-weight: 500;
 `;
 
 const BottomTextContainer = styled.div`

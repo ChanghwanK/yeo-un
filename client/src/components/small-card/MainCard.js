@@ -53,11 +53,16 @@ const ImgContainer = styled.div`
   min-height: 300px;
   max-height: 500px;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.13), 0 3px 3px rgba(0, 0, 0, 0.13);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  img {
+    overflow: hidden;
+    object-fit: cover;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    &:hover {
+      transform: scale(1.1);
+    }
 `;
-//   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-//   &:hover {
-//     transform: translateY(-7px);
-//   }
 
 const NullImageContainer = styled.div`
   display: flex;

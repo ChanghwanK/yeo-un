@@ -50,7 +50,7 @@ const FourCardContainer = styled.div`
   display: grid;
   align-items: center;
   justify-items: center;
-  row-gap: 20px;
+  row-gap: 50px;
 
   @media screen and (max-width: 1000px) {
     grid-template-columns: 1fr 1fr;
@@ -63,7 +63,10 @@ const FourCardContainer = styled.div`
 
 const TitleText = styled.h1`
   font-size: 30px;
-  padding: 10px;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-left: 30px;
+  margin-bottom: 30px;
 `;
 
 export default ContentsContainer;
