@@ -101,6 +101,7 @@ const TagContainer = styled.div`
 
 const Image = styled.img`
   width: 70%;
+  margin: 15px;
 `;
 
 const Content = styled.div`
