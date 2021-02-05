@@ -49,5 +49,4 @@ public class MemberController {
         String signOutResult = memberService.signOut(request.getHeader().getMemberId());
         return new ResponseEntity<>(signOutResult, HttpStatus.OK);
     }
-
 }

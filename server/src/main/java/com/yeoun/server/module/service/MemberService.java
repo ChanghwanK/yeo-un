@@ -56,7 +56,7 @@ public class MemberService {
 
     private Member findOptionalUserById(Long memberId) {
         return memberRepository.findById(memberId)
-                .orElseThrow(() -> new MemberNotFoundException());
+                .orElseThrow(MemberNotFoundException::new);
     }
 
     private String buildUserSignInJsonResponse(Member member) {
@@ -105,6 +105,6 @@ public class MemberService {
 
     private Member findRequiredUserById(Long memberId) {
         return memberRepository.findById(memberId)
-                .orElseThrow(() -> new MemberNotFoundException());
+                .orElseThrow(MemberNotFoundException::new);
     }
 }

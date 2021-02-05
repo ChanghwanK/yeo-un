@@ -47,10 +47,10 @@ public class Post extends BaseTimeEntity {
     private Category category;
 
     @OneToMany(mappedBy = "post")
-    private List<Image> images = new ArrayList<>();
+    private List<Image> images;
 
     @OneToMany(mappedBy = "post")
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> comments;
 
     @Builder
     public Post(String title,
@@ -68,9 +68,10 @@ public class Post extends BaseTimeEntity {
         this.viewCount = 0;
         this.member = member;
         this.category = category;
-        for (Image image : images) {
-            this.addImage(image);
-        }
+
+//        for (Image image : images) {
+//            this.addImage(image);
+//        }
     }
 
     public void toUpdate(PostUpdateDto updateDto) {
