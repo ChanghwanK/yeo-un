@@ -89,12 +89,15 @@ const Cover = styled.div`
 `;
 
 const Input = styled.input`
-  border: 1px solid black;
+  border: 1px solid #8f8f8f;
   margin: 10px;
   padding: 10px;
   width: 250px;
   border-radius: 10px;
   background-color: white;
+  &:hover {
+    border: 1px solid #181825;
+  }
 `;
 
 const Button = styled.button`

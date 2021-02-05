@@ -151,7 +151,7 @@ const Border = styled.div`
 `;
 
 const Boolpw = styled.p`
-  color: red;
+  color: #3d3d3d;
 `;
 
 const Input = styled.input`
@@ -173,6 +173,9 @@ const Button = styled.button`
   border-radius: 5px;
   background-color: #37373d;
   color: white;
+  &:hover {
+    background-color: #a9a9a9;
+  }
 `;
 
 const HeaderText = styled.p`
