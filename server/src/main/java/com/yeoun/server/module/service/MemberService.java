@@ -7,7 +7,6 @@ import com.yeoun.server.infra.JsonBuilder;
 import com.yeoun.server.infra.exception.DuplicateUserException;
 import com.yeoun.server.infra.exception.member.MemberNotFoundException;
 import com.yeoun.server.module.model.domain.Member;
-import com.yeoun.server.module.model.domain.MemberType;
 import com.yeoun.server.module.model.dto.MemberSignUpDto;
 import com.yeoun.server.module.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -39,25 +38,19 @@ public class MemberService {
 
     public String signIn(JsonNode payload) {
         Member givenMember = buildMemberFromJson(payload);
-        Member expectedMember = findOptionalUserById(givenMember.getId());
+        Member expectedMember = findOptionalUserByEmail(givenMember.getEmail());
         return buildMemberSignInJsonResponse(expectedMember);
     }
 
     private Member buildMemberFromJson(JsonNode payload) {
         return Member.builder()
-                .memberId(payload.get("memberId").asLong())
                 .email(payload.get("email").asText())
                 .password(payload.get("password").asText())
-                .name(payload.get("name").asText())
-                .nickname(payload.get("nickname").asText())
-                .profileImage(payload.get("profileImage").asText())
-                .phone(payload.get("phone").asText())
-                .memberType(MemberType.valueOf(payload.get("memberType").asText()))
                 .build();
     }
 
-    private Member findOptionalUserById(Long memberId) {
-        return memberRepository.findById(memberId)
+    private Member findOptionalUserByEmail(String email) {
+        return memberRepository.findByEmail(email)
                 .orElseThrow(MemberNotFoundException::new);
     }
 
