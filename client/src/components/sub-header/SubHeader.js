@@ -8,11 +8,13 @@ import SubHeaderItem from 'components/sub-header/SubHeaderItem';
 
 const SubHeader = () => {
   const settings = {
-    dots: true,
     infinite: true,
-    speed: 500,
+    speed: 1000,
     slidesToShow: 1,
     slidesToScroll: 1,
+    arrows: false,
+    autoplaySpeed: 3000,
+    autoplay: true,
   };
   return (
     <Container>
@@ -27,6 +29,10 @@ const SubHeader = () => {
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  .slick-initialized {
+    overflow: hidden;
+  }
+`;
 
 export default SubHeader;
