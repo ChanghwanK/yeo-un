@@ -1,5 +1,7 @@
 package com.yeoun.server.module.model.dto;
 
+import com.yeoun.server.module.model.domain.Category;
+import com.yeoun.server.module.model.domain.Member;
 import com.yeoun.server.module.model.domain.Post;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -13,21 +15,15 @@ public class PostRequestDto {
     private String title;
     private String author;
     private String content;
+    private Long categoryId;
+    private Long memberId;
 
-
-
-    /**
-     *  todo
-     *  post 등록시 카테고리 객체 생성을 어떻게 해야 할까?
-     *  - 요청 dto 에 category 가 존재 해야 함
-     *  - 근데 여기서 어떻게 정보를 가져와야 할까?
-     */
-    public Post toEntity(PostRequestDto postRequestDto) {
+    public Post toEntity(PostRequestDto postRequestDto, Category category, Member member) {
         return Post.builder()
             .title(postRequestDto.getTitle())
             .content(postRequestDto.getContent())
-            //.category(categoryRepository.getOne(postRequestDto.getCategoryId()))
+            .category(category)
+            .member(member)
             .build();
     }
-
 }
