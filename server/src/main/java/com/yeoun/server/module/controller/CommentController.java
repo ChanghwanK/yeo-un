@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/post")
 @RestController
 public class CommentController {
+
   private final CommentService commentService;
 
   @ResponseStatus(HttpStatus.CREATED)
