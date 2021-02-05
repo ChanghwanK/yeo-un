@@ -83,8 +83,8 @@ const UploadForm = (props) => {
           onChange={onChangeTitle}
         />
         <DivideLine />
-        <CategoryContainer />
-        <DropDown
+        <CategoryContainer contenxtState={state} contenxtAction={actions} />
+        {/* <DropDown
           value={category}
           onChange={onSelectCategory}
           name="categories"
@@ -93,7 +93,7 @@ const UploadForm = (props) => {
           <Option value="musical">뮤지컬</Option>
           <Option value="book">책</Option>
           <Option value="exhibition">전시회</Option>
-        </DropDown>
+        </DropDown> */}
         <Contents
           onChange={onChangeContent}
           name="contents"
@@ -152,7 +152,7 @@ const FileInput = styled.input`
 
 const Contents = styled.textarea`
   width: 97%;
-  font-size: 3vw;
+  font-size: 2vw;
   resize: none;
   border: none;
   height: 500px;

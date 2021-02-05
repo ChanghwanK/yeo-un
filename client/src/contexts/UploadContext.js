@@ -21,8 +21,8 @@ const UploadContext = createContext({
 // Provider를 rendering하면서 상태값과 메소드들을 전달합니다.
 const UploadProvider = ({ children }) => {
   const [previewTitle, setPreviewTitle] = useState('');
-  const [previewCategory, setPreviewCategory] = useState('');
-  const [previewHashTag, setPreviewHashTag] = useState('');
+  const [previewCategory, setPreviewCategory] = useState([]);
+  const [previewHashTag, setPreviewHashTag] = useState([]);
   const [previewThumbnail, setPreviewThumbnail] = useState('');
   const [previewContent, setPreviewContent] = useState('');
 

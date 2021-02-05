@@ -1,21 +1,46 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-const Category = ({ children, hashtag }) => {
+const Category = ({ children, hashtag, contenxtState, contenxtAction }) => {
   const [clicked, setClicked] = useState(false);
 
-  const onClickHandler = () => {
+  const onClickCategoryHandler = (e) => {
+    if (clicked) {
+      contenxtAction.setPreviewCategory(
+        contenxtState.previewCategory.filter((i) => i !== e.target.innerHTML),
+      );
+    } else {
+      contenxtAction.setPreviewCategory([
+        ...contenxtState.previewCategory,
+        e.target.innerHTML,
+      ]);
+    }
+    setClicked(!clicked);
+  };
+
+  const onClickHashTagHandler = (e) => {
+    if (clicked) {
+      contenxtAction.setPreviewHashTag(
+        contenxtState.previewHashTag.filter((i) => i !== e.target.innerHTML),
+      );
+    } else {
+      contenxtAction.setPreviewHashTag([
+        ...contenxtState.previewHashTag,
+        e.target.innerHTML,
+      ]);
+    }
+    console.log(contenxtState.previewHashTag);
     setClicked(!clicked);
   };
 
   return (
     <>
       {hashtag ? (
-        <Container onClick={onClickHandler} clicked={clicked}>
+        <Container onClick={onClickHashTagHandler} clicked={clicked}>
           #{children}
         </Container>
       ) : (
-        <Container onClick={onClickHandler} clicked={clicked}>
+        <Container onClick={onClickCategoryHandler} clicked={clicked}>
           {children}
         </Container>
       )}

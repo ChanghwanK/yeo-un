@@ -11,6 +11,7 @@ const ResultPreview = () => {
       <Card
         title={state.previewTitle}
         category={state.previewCategory}
+        hashtag={state.previewHashTag}
         content={state.previewContent}
         image={state.previewThumbnail}
       />

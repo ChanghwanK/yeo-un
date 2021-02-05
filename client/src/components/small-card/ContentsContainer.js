@@ -29,6 +29,7 @@ const ContentContainer = ({
   created,
   comment,
   who,
+  hashtag,
 }) => {
   const classes = useStyles();
 
@@ -43,16 +44,33 @@ const ContentContainer = ({
         </Avatar>
       </IconContainer>
       <SmallTextContainer>
-        {created ? <span>{created}</span> : <span>2020/02/06</span>}
+        {created ? <span>{created}</span> : <span>2020.02.06</span>}
         <span>/</span>
         {like ? <span>좋아요 {like}개</span> : <span>좋아요 0개</span>}
         <span>/</span>
         {comment ? <span>댓글 {comment}개</span> : <span>댓글 0개</span>}
       </SmallTextContainer>
-      <TitleText>{title}</TitleText>
+      {title ? (
+        <TitleText>{title}</TitleText>
+      ) : (
+        <TitleText>제목을 입력하세요</TitleText>
+      )}
       <BottomTextContainer>
         {who ? <span>by {who}</span> : <span>by Hyeonsu</span>}
-        <BottomCategoryContainer>{category}</BottomCategoryContainer>
+        <BottomCategoryContainer>
+          {category
+            ? category.map((i) => {
+                return <div key={i}>{i}</div>;
+              })
+            : ''}
+        </BottomCategoryContainer>
+        <BottomCategoryContainer>
+          {hashtag
+            ? hashtag.map((i) => {
+                return <div key={i}>{i}</div>;
+              })
+            : ''}
+        </BottomCategoryContainer>
       </BottomTextContainer>
     </Container>
   );

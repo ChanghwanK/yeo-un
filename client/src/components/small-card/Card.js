@@ -4,11 +4,16 @@ import styled from 'styled-components';
 import ImageContainer from 'components/small-card/ImageContainer';
 import ContentContainer from 'components/small-card/ContentsContainer';
 
-const Card = ({ title, content, category, image }) => {
+const Card = ({ title, content, category, image, hashtag }) => {
   return (
     <Container>
       <ImageContainer image={image} />
-      <ContentContainer title={title} content={content} category={category} />
+      <ContentContainer
+        title={title}
+        content={content}
+        category={category}
+        hashtag={hashtag}
+      />
     </Container>
   );
 };
