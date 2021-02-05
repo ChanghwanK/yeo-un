@@ -1,31 +1,32 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 
-const Category = ({ children, hashtag, contenxtState, contenxtAction }) => {
+const Category = ({ children, hashtag, contextState, contextAction, idx }) => {
   const [clicked, setClicked] = useState(false);
 
   const onClickCategoryHandler = (e) => {
-    if (clicked) {
-      contenxtAction.setPreviewCategory(
-        contenxtState.previewCategory.filter((i) => i !== e.target.innerHTML),
-      );
+    if (
+      clicked &&
+      contextState.previewCategory !== '' &&
+      contextState.categoryNumber !== 0
+    ) {
+      contextAction.setPreviewCategory('');
+      contextAction.setCategoryNumber(0);
     } else {
-      contenxtAction.setPreviewCategory([
-        ...contenxtState.previewCategory,
-        e.target.innerHTML,
-      ]);
+      contextAction.setPreviewCategory(e.target.innerHTML);
+      contextAction.setCategoryNumber(e.target.id);
     }
     setClicked(!clicked);
   };
 
   const onClickHashTagHandler = (e) => {
     if (clicked) {
-      contenxtAction.setPreviewHashTag(
-        contenxtState.previewHashTag.filter((i) => i !== e.target.innerHTML),
+      contextAction.setPreviewHashTag(
+        contextState.previewHashTag.filter((i) => i !== e.target.innerHTML),
       );
     } else {
-      contenxtAction.setPreviewHashTag([
-        ...contenxtState.previewHashTag,
+      contextAction.setPreviewHashTag([
+        ...contextState.previewHashTag,
         e.target.innerHTML,
       ]);
     }
@@ -39,7 +40,13 @@ const Category = ({ children, hashtag, contenxtState, contenxtAction }) => {
           #{children}
         </Container>
       ) : (
-        <Container onClick={onClickCategoryHandler} clicked={clicked}>
+        <Container
+          id={idx}
+          onClick={onClickCategoryHandler}
+          nowCategory={contextState.previewCategory}
+          child={children}
+          clicked={clicked}
+        >
           {children}
         </Container>
       )}
@@ -63,7 +70,7 @@ const Container = styled.div`
   }
 
   ${(props) => {
-    if (props.clicked) {
+    if (props.clicked && props.child === props.nowCategory) {
       return css`
         background-color: #181825;
         color: white;

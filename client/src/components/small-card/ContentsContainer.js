@@ -57,13 +57,7 @@ const ContentContainer = ({
       )}
       <BottomTextContainer>
         {who ? <span>by {who}</span> : <span>by Hyeonsu</span>}
-        <BottomCategoryContainer>
-          {category
-            ? category.map((i) => {
-                return <div key={i}>{i}</div>;
-              })
-            : ''}
-        </BottomCategoryContainer>
+        <BottomCategoryContainer>{category}</BottomCategoryContainer>
         <BottomCategoryContainer>
           {hashtag
             ? hashtag.map((i) => {

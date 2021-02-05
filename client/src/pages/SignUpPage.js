@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import Logo from 'components/Logo';
 
+const URL = 'http://493600167198.ngrok.io';
+
 const SignUpPage = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
@@ -49,23 +51,33 @@ const SignUpPage = () => {
 
   const onClickSignInButton = (e) => {
     e.preventDefault();
+    // const formData = new FormData();
+    // formData.append('name', name);
+    // formData.append('password', pw);
+    // formData.append('email', id);
+    // formData.append('phone', phoneNumber);
+    // formData.append('profileImage', profileImage);
+    // formData.append('nickname', nickname);
+    const data = {
+      name: name,
+      password: pw,
+      email: id,
+      phone: phoneNumber,
+      profileImage: profileImage,
+      nickname: nickname,
+    };
 
-    const formData = new FormData();
-    formData.append('email', id);
-    formData.append('password', pw);
-    formData.append('name', name);
-    formData.append('nickname', nickname);
-    formData.append('profile_image', profileImage);
-    formData.append('phone', phoneNumber);
-
-    console.log(id, pw, name, nickname, profileImage, phoneNumber);
-
-    // axios({
-    //   method: 'post',
-    //   url: '/api/dd',
-    //   data: formData,
-    //   headers: { 'Content-Type': 'multipart/form-data' },
-    // });
+    axios({
+      method: 'post',
+      url: `${URL}/api/member/sign-up`,
+      Member: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`,
+        'Access-Control-Allow-Origin': '*',
+      },
+    }).then((res) => {
+      console.log(res);
+    });
   };
 
   return (

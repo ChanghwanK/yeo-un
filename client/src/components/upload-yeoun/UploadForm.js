@@ -1,23 +1,15 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
-import moment from 'moment';
 import { withRouter } from 'react-router-dom';
 
 import UploadContext from 'contexts/UploadContext';
 import CategoryContainer from 'components/upload-yeoun/CategoryContainer';
 
 const UploadForm = (props) => {
-  const [category, setCategory] = useState('movie');
   const [file, setFile] = useState('');
   const [fileURL, setFileURL] = useState('');
-
   const [state, actions] = useContext(UploadContext);
-
-  const onSelectCategory = (e) => {
-    setCategory(e.target.value);
-    actions.setPreviewCategory(e.target.value);
-  };
 
   const onChangeContent = (e) => {
     actions.setPreviewContent(e.target.value);
@@ -35,30 +27,43 @@ const UploadForm = (props) => {
     e.preventDefault();
     const title = document.getElementsByName('title')[0].value.trim();
     const contents = document.getElementsByName('contents')[0].value.trim();
-    const time = moment().format('YYYY-MM-DD hh:mm');
-    // const fileName = file[0]['uploadedFile'].name;
 
-    // console.log(fileName, fileURL);
-    // console.log(title, contents, category);
-    // console.log(time);
+    // const formData = new FormData();
+    // formData.append('title', title);
+    // formData.append('author', 'hyeonsu');
+    // formData.append('content', contents);
+    // formData.append('likeCount', 0);
+    // formData.append('viewCount', 0);
+    // formData.append('category', nowCategory);
+    // formData.append('thumbnail', fileURL);
 
-    const formData = new FormData();
-    formData.append('title', title);
-    formData.append('content', contents);
-    formData.append('created_at', time);
-    // formData.append('modified_at', );
-    formData.append('like_count', 0);
-    formData.append('view_count', 0);
-    // formData.append('user_id', );
-    formData.append('category_id', category);
-    formData.append('thumbnail', fileURL);
+    const data = {
+      title: title,
+      author: 'hyeonsu',
+      content: contents,
+      likeCount: 0,
+      viewCount: 0,
+      category: state.categoryNumber,
+      thumbnail: fileURL,
+    };
 
-    // axios({
-    //   method: 'post',
-    //   url: '/api/dd',
-    //   data: formData,
-    //   headers: { 'Content-Type': 'multipart/form-data' },
-    // });
+    console.log(data);
+
+    axios({
+      method: 'post',
+      url: `/api/posts`,
+      data: JSON.stringify(data),
+      headers: {
+        'Content-Type': `application/json`,
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const onChangeFile = (e) => {
@@ -83,7 +88,7 @@ const UploadForm = (props) => {
           onChange={onChangeTitle}
         />
         <DivideLine />
-        <CategoryContainer contenxtState={state} contenxtAction={actions} />
+        <CategoryContainer contextState={state} contextAction={actions} />
         <Contents
           onChange={onChangeContent}
           name="contents"

@@ -4,7 +4,9 @@ import React, { createContext, useState } from 'react';
 const UploadContext = createContext({
   state: {
     previewTitle: '',
-    previewCategory: [],
+    previewCategory: '',
+    isCheckCategory: false,
+    categoryNumber: 0,
     previewHashTag: [],
     previewContent: '',
     previewThumbnail: '',
@@ -12,6 +14,8 @@ const UploadContext = createContext({
   actions: {
     setPreviewTitle: () => {},
     setPreviewCategory: () => {},
+    setCategoryNumber: () => {},
+    setIsCheckCategory: () => {},
     setPreviewHashTag: () => {},
     setPreviewThumbnail: () => {},
     setPreviewContent: () => {},
@@ -21,7 +25,9 @@ const UploadContext = createContext({
 // Provider를 rendering하면서 상태값과 메소드들을 전달합니다.
 const UploadProvider = ({ children }) => {
   const [previewTitle, setPreviewTitle] = useState('');
-  const [previewCategory, setPreviewCategory] = useState([]);
+  const [previewCategory, setPreviewCategory] = useState('');
+  const [categoryNumber, setCategoryNumber] = useState(0);
+  const [isCheckCategory, setIsCheckCategory] = useState(false);
   const [previewHashTag, setPreviewHashTag] = useState([]);
   const [previewThumbnail, setPreviewThumbnail] = useState('');
   const [previewContent, setPreviewContent] = useState('');
@@ -30,6 +36,8 @@ const UploadProvider = ({ children }) => {
     state: {
       previewTitle,
       previewCategory,
+      isCheckCategory,
+      categoryNumber,
       previewHashTag,
       previewThumbnail,
       previewContent,
@@ -37,6 +45,8 @@ const UploadProvider = ({ children }) => {
     actions: {
       setPreviewTitle,
       setPreviewCategory,
+      setIsCheckCategory,
+      setCategoryNumber,
       setPreviewHashTag,
       setPreviewThumbnail,
       setPreviewContent,

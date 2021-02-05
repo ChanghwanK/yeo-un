@@ -40,5 +40,6 @@ module.exports = {
     'react/jsx-one-expression-per-line': 0,
     'react/jsx-boolean-value': 0,
     'consistent-return': 0,
+    'object-shorthand': 0,
   },
 };

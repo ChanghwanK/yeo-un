@@ -38,18 +38,19 @@ const hashtagContent = [
   '취향저격',
 ];
 
-const CategoryContainer = ({ contenxtState, contenxtAction }) => {
+const CategoryContainer = ({ contextState, contextAction }) => {
   return (
     <Container>
       <HeaderText>카테고리</HeaderText>
       <Categories>
-        {categoryContent.map((i) => {
+        {categoryContent.map((i, idx) => {
           return (
             <Category
-              contenxtState={contenxtState}
-              contenxtAction={contenxtAction}
+              contextState={contextState}
+              contextAction={contextAction}
               hashtag={false}
               key={i}
+              idx={idx}
             >
               {i}
             </Category>
@@ -61,8 +62,8 @@ const CategoryContainer = ({ contenxtState, contenxtAction }) => {
         {hashtagContent.map((i) => {
           return (
             <Category
-              contenxtState={contenxtState}
-              contenxtAction={contenxtAction}
+              contextState={contextState}
+              contextAction={contextAction}
               hashtag={true}
               key={i}
             >

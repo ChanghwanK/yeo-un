@@ -5,6 +5,8 @@ import axios from 'axios';
 
 import Logo from 'components/Logo';
 
+const URL = 'http://493600167198.ngrok.io';
+
 const LoginPage = (props) => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
@@ -22,16 +24,18 @@ const LoginPage = (props) => {
   };
 
   const onClickLoginButton = () => {
-    // if (id !== '' && pw !== '') {
-    //   axios({
-    //     // url: 'https://test/api/cafe/list/today',
-    //     method: 'post',
-    //     data: {
-    //       email: id,
-    //       password: pw,
-    //     },
-    //   });
-    // }
+    if (id !== '' && pw !== '') {
+      axios({
+        url: `${URL}/api/member/sign-in`,
+        method: 'post',
+        Member: {
+          email: id,
+          password: pw,
+        },
+      }).then((res) => {
+        console.log(res);
+      });
+    }
   };
 
   return (
