@@ -37,18 +37,26 @@ const LoginPage = (props) => {
   return (
     <Container>
       <Logo />
-      <HeaderText>로그인 페이지</HeaderText>
-      <p>이메일</p>
-      <Input type="text" onChange={onChangeIdInput} value={id} />
-      <p>패스워드</p>
-      <Input type="password" onChange={onChangePwInput} value={pw} />
-      <div>
-        <Button onClick={onClickLoginButton}>로그인</Button>
-        <Button onClick={onClickSignInButton}>회원가입</Button>
-      </div>
+      <HeaderText>Welcome :)</HeaderText>
+      <Cover>
+        <p>email</p>
+        <Input type="text" onChange={onChangeIdInput} value={id} />
+        <p>password</p>
+        <Input type="password" onChange={onChangePwInput} value={pw} />
+        <div>
+          <Button>Login</Button>
+          <Button onClick={onClickSignInButton}>Sign Up</Button>
+        </div>
+      </Cover>
     </Container>
   );
 };
+
+const Cover = styled.div`
+  border: 5px solid black;
+  margin: 30px;
+  padding: 30px;
+`;
 
 const Container = styled.div`
   display: flex;
