@@ -5,6 +5,7 @@ import com.yeoun.server.infra.exception.member.MemberNotFoundException;
 import com.yeoun.server.infra.exception.post.PostNotFoundException;
 import com.yeoun.server.module.model.domain.Category;
 import com.yeoun.server.module.model.domain.Comment;
+import com.yeoun.server.module.model.domain.Liked;
 import com.yeoun.server.module.model.domain.Member;
 import com.yeoun.server.module.model.domain.Post;
 import com.yeoun.server.module.model.dto.post.PostRequestDto;
@@ -37,9 +38,11 @@ public class PostService {
           .orElseThrow(MemberNotFoundException::new);
       Category category = categoryRepository.findById(postRequestDto.getCategoryId())
           .orElseThrow(CategoryNotFoundException::new);
+      // Liked liked = likedRepository.
 
       post.setCategory(category);
       post.setMember(member);
+      // post.setLiked()
 
       /**
        * 이미지가 여러 건 올 수 있는데 Image 타입이 아니라 List<Image> 여야 하지 않을까요?
@@ -59,8 +62,6 @@ public class PostService {
 
   /**
    * 상세 조회시 post에 comment가 같이 내려감
-   * @param postId
-   * @return Post
    *
    * todo
    * Image 관련 구현이 필요 합니다.
@@ -72,6 +73,14 @@ public class PostService {
         post.setComments(comments);
     //    post.setImages();
         return post;
+    }
+
+  /**
+   * 전체 조회를 위한 메서드 입니다.
+   */
+  @Transactional
+    public List<Post> findAll() {
+      return postRepository.findAll();
     }
 
     @Transactional

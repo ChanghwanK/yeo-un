@@ -89,6 +89,16 @@ class PostControllerTests {
         .andExpect(status().isCreated());
   }
 
+  @Test
+  void getPost() throws Exception {
+    mockMvc.perform(
+        MockMvcRequestBuilders.get("api/posts/1")
+            .param("page","0")
+            .param("size","2"))
+        .andExpect(status().isOk());
+  }
+
+
   private String toJasonString(PostRequestDto postRequestDto) throws JsonProcessingException {
     return objectMapper.writeValueAsString(postRequestDto);
   }

@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc5f432f-07af-42f0-86a4-ec7ba1450f40" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/server/src/test/java/com/yeoun/server/module/controller/CommentControllerTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/test/java/com/yeoun/server/module/controller/PostControllerTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/CommentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/CommentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/MemberController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Category.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Category.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Post.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Post.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/comment/CommentSaveRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/comment/CommentSaveRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/post/PostRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/dto/post/PostRequestDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/MemberService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/PostService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/test/java/com/yeoun/server/module/controller/PostControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/com/yeoun/server/module/controller/PostControllerTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,9 +26,22 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
+        <task path="$PROJECT_DIR$/server">
+          <activation />
+        </task>
         <projects_view>
           <tree_state>
-            <expand />
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="server" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="server" type="f1a62948:ProjectNode" />
+                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+              </path>
+            </expand>
             <select />
           </tree_state>
         </projects_view>
@@ -84,7 +94,7 @@
       <recent name="com.yeoun.server.module.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.PostControllerTests.create">
+  <component name="RunManager" selected="Spring Boot.ServerApplication">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -138,6 +148,27 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="PostControllerTests.getPost" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/server" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.yeoun.server.module.controller.PostControllerTests.getPost&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ServerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="server.main" />
       <extension name="coverage">
@@ -153,9 +184,10 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.PostControllerTests.create" />
-        <item itemvalue="Gradle.CommentControllerTests.create" />
         <item itemvalue="Spring Boot.ServerApplication" />
+        <item itemvalue="Gradle.PostControllerTests.create" />
+        <item itemvalue="Gradle.PostControllerTests.getPost" />
+        <item itemvalue="Gradle.CommentControllerTests.create" />
       </list>
     </recent_temporary>
   </component>
@@ -168,6 +200,8 @@
       <option name="presentableId" value="Default" />
       <updated>1612457812427</updated>
       <workItem from="1612457813758" duration="7726000" />
+      <workItem from="1612513481244" duration="416000" />
+      <workItem from="1612513900488" duration="2129000" />
     </task>
     <servers />
   </component>
@@ -184,5 +218,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
