@@ -6,7 +6,8 @@ const GlobalStyle = createGlobalStyle`
     button,
     input,
     a,
-    li {
+    li,
+    body {
         all: unset;
     };
 
