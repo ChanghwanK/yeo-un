@@ -53,7 +53,7 @@ public class MemberService {
     }
 
     private void checkDuplicateUser(MemberSignUpDto memberSignUpDto) {
-        validateDuplicateId(memberSignUpDto.getId());
+        //validateDuplicateId(memberSignUpDto.getId());
         validateDuplicateEmail(memberSignUpDto.getEmail());
     }
 
