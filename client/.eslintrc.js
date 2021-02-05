@@ -37,5 +37,6 @@ module.exports = {
     'no-unused-vars': 0,
     'dot-notation': 0,
     'react/jsx-props-no-spreading': 0,
+    'react/jsx-one-expression-per-line': 0,
   },
 };
