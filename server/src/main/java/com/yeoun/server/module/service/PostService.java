@@ -5,12 +5,14 @@ import com.yeoun.server.infra.exception.member.MemberNotFoundException;
 import com.yeoun.server.infra.exception.post.PostNotFoundException;
 import com.yeoun.server.module.model.domain.Category;
 import com.yeoun.server.module.model.domain.Comment;
-import com.yeoun.server.module.model.domain.Liked;
 import com.yeoun.server.module.model.domain.Member;
 import com.yeoun.server.module.model.domain.Post;
 import com.yeoun.server.module.model.dto.post.PostRequestDto;
 import com.yeoun.server.module.model.dto.post.PostUpdateDto;
-import com.yeoun.server.module.repository.*;
+import com.yeoun.server.module.repository.CategoryRepository;
+import com.yeoun.server.module.repository.CommentRepository;
+import com.yeoun.server.module.repository.MemberRepository;
+import com.yeoun.server.module.repository.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +30,6 @@ public class PostService {
     private final CategoryRepository categoryRepository;
     private final MemberRepository memberRepository;
     private final CommentRepository commentRepository;
-    private final ImageRepository imageRepository;
 
     @Transactional
     public void create(PostRequestDto postRequestDto) {
@@ -44,11 +45,6 @@ public class PostService {
       post.setMember(member);
       // post.setLiked()
 
-      /**
-       * 이미지가 여러 건 올 수 있는데 Image 타입이 아니라 List<Image> 여야 하지 않을까요?
-       */
-      //post.addImage();
-
       postRepository.save(post);
     }
 
@@ -62,16 +58,12 @@ public class PostService {
 
   /**
    * 상세 조회시 post에 comment가 같이 내려감
-   *
-   * todo
-   * Image 관련 구현이 필요 합니다.
    */
     public Post findById(Long postId) {
         List<Comment> comments = categoryRepository.findByPostId(postId);
 
         Post post = postRepository.findById(postId).orElseThrow(PostNotFoundException::new);
         post.setComments(comments);
-    //    post.setImages();
         return post;
     }
 
