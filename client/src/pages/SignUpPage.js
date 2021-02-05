@@ -151,7 +151,7 @@ const Border = styled.div`
 `;
 
 const Boolpw = styled.p`
-  color: #3d3d3d;
+  color: blue;
 `;
 
 const Input = styled.input`
