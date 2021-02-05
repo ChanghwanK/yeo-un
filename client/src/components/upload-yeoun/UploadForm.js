@@ -2,9 +2,12 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import moment from 'moment';
-import UploadContext from 'contexts/UploadContext';
+import { withRouter } from 'react-router-dom';
 
-const UploadForm = () => {
+import UploadContext from 'contexts/UploadContext';
+import CategoryContainer from 'components/upload-yeoun/CategoryContainer';
+
+const UploadForm = (props) => {
   const [category, setCategory] = useState('movie');
   const [file, setFile] = useState('');
   const [fileURL, setFileURL] = useState('');
@@ -22,6 +25,10 @@ const UploadForm = () => {
 
   const onChangeTitle = (e) => {
     actions.setPreviewTitle(e.target.value);
+  };
+
+  const onClickCancelButton = (e) => {
+    props.history.push('/');
   };
 
   const onClickSubmitButton = (e) => {
@@ -76,7 +83,7 @@ const UploadForm = () => {
           onChange={onChangeTitle}
         />
         <DivideLine />
-        <p>카테고리</p>
+        <CategoryContainer />
         <DropDown
           value={category}
           onChange={onSelectCategory}
@@ -100,7 +107,8 @@ const UploadForm = () => {
           onChange={onChangeFile}
         />
         <div>
-          <Button onClick={onClickSubmitButton}>여운 남기기</Button>
+          <CancelButton onClick={onClickCancelButton}>돌아가기</CancelButton>
+          <UploadButton onClick={onClickSubmitButton}>여운 남기기</UploadButton>
         </div>
       </Form>
     </Container>
@@ -111,7 +119,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
+  width: 50%;
   align-items: center;
+  @media only screen and (max-width: 1024px) {
+    width: 100%;
+  }
+
   p {
     margin: 10px;
   }
@@ -122,15 +135,7 @@ const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-
-  @media only screen and (max-width: 1024px) {
-    width: 100vw;
-  }
-
-  p {
-    margin: 10px;
-  }
+  width: 98%;
 `;
 
 const HeaderInput = styled.input`
@@ -141,7 +146,6 @@ const HeaderInput = styled.input`
 `;
 
 const FileInput = styled.input`
-  border: 1px solid black;
   margin: 10px;
   padding: 10px;
 `;
@@ -154,17 +158,44 @@ const Contents = styled.textarea`
   height: 500px;
 `;
 
-const Button = styled.button`
-  border: 1px solid black;
+const UploadButton = styled.button`
   cursor: pointer;
   margin: 10px;
   padding: 10px;
+  width: 10vw;
+  height: 2vw;
+  min-width: 150px;
+  min-height: 25px;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 1.5vw;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    opacity: 0.5;
+  }
+
+  background-color: #2c353e;
+  color: white;
 `;
 
-const Image = styled.img`
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+const CancelButton = styled.button`
+  cursor: pointer;
+  margin: 10px;
+  padding: 10px;
+  width: 10vw;
+  height: 2vw;
+  min-width: 150px;
+  min-height: 25px;
+  text-align: center;
+  border-radius: 7px;
+  font-size: 1.5vw;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  &:hover {
+    background-color: #a9a9a9;
+  }
+  background-color: #c9c9c9;
 `;
 
 const DivideLine = styled.hr`
@@ -179,4 +210,4 @@ const DropDown = styled.select``;
 
 const Option = styled.option``;
 
-export default UploadForm;
+export default withRouter(UploadForm);
