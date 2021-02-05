@@ -13,6 +13,7 @@ public class ImageService {
 
     private final ImageRepository imageRepository;
 
+    @Transactional
     public void save(Image image) {
         Image img = new Image();
         img.setFileName(image.getFileName());

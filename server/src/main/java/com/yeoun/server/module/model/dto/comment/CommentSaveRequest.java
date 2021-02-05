@@ -32,5 +32,4 @@ public class CommentSaveRequest {
         .likeCount(0)
         .build();
   }
-
 }

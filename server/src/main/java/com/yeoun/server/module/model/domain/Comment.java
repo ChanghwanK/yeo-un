@@ -48,9 +48,6 @@ public class Comment extends BaseTimeEntity {
         post.getComments().add(this);
     }
 
-    /**
-     * 좋아요 개수는 프론트 측에서 ++ 해서 넘겨줄 예정 입니다.
-     */
     public void toUpdate(CommentUpdateRequest updateDto) {
         this.content = updateDto.getContent();
         this.likeCount = updateDto.getLikCount();

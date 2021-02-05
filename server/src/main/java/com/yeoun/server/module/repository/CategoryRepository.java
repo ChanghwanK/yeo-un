@@ -2,16 +2,12 @@ package com.yeoun.server.module.repository;
 
 import com.yeoun.server.module.model.domain.Category;
 import com.yeoun.server.module.model.domain.Comment;
-import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-/**
- * description:
- *
- * @author changhwan kim
- * @since 2021/02/05
- */
+import java.util.List;
+
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
   List<Comment> findByPostId(Long id);
+
 }

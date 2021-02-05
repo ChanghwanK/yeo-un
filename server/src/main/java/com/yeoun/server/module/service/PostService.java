@@ -3,26 +3,24 @@ package com.yeoun.server.module.service;
 import com.yeoun.server.infra.exception.category.CategoryNotFoundException;
 import com.yeoun.server.infra.exception.member.MemberNotFoundException;
 import com.yeoun.server.infra.exception.post.PostNotFoundException;
+import com.yeoun.server.module.model.domain.Category;
 import com.yeoun.server.module.model.domain.Comment;
 import com.yeoun.server.module.model.domain.Member;
-import com.yeoun.server.module.model.dto.post.PostUpdateDto;
-import com.yeoun.server.module.model.domain.Category;
 import com.yeoun.server.module.model.domain.Post;
 import com.yeoun.server.module.model.dto.post.PostRequestDto;
-import com.yeoun.server.module.repository.CategoryRepository;
-import com.yeoun.server.module.repository.CommentRepository;
-import com.yeoun.server.module.repository.ImageRepository;
-import com.yeoun.server.module.repository.MemberRepository;
-import com.yeoun.server.module.repository.PostRepository;
-import java.util.List;
+import com.yeoun.server.module.model.dto.post.PostUpdateDto;
+import com.yeoun.server.module.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class PostService {
 
     private final PostRepository postRepository;
@@ -55,7 +53,6 @@ public class PostService {
     * 변경 사항
     * 카테고리별 페이징 적용 기존의 findAll 삭제
     */
-    @Transactional
     public Page<Post> findAllByCategoryId(Pageable pageable, Long categoryId) {
       return postRepository.findAllByCategoryId(categoryId);
     }
@@ -68,7 +65,6 @@ public class PostService {
    * todo
    * Image 관련 구현이 필요 합니다.
    */
-  @Transactional
     public Post findById(Long postId) {
         List<Comment> comments = categoryRepository.findByPostId(postId);
 

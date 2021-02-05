@@ -7,11 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import lombok.ToString;
-import lombok.ToString.Exclude;
 
 /**
  * 1. setComment 함수로 댓글 연관관계 추가
@@ -70,11 +67,6 @@ public class Post extends BaseTimeEntity {
         }
     }
 
-
-    /**
-     * 내용 변경을 위한 메서드
-     * @param updateDto
-     */
     public void toUpdate(PostUpdateDto updateDto) {
         if (updateDto.getCategoryId() != null) {
             this.content = updateDto.getContent();
