@@ -28,14 +28,14 @@ public class Comment extends BaseTimeEntity {
     private String content;
     private int likeCount;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Comment parent;
 
     @OneToMany(mappedBy = "parent")
-    private List<Comment> child = new ArrayList<>();
+    private List<Comment> child;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
     public void addChildComment(Comment child) {
