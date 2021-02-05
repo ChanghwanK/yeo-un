@@ -32,6 +32,9 @@ public class Post extends BaseTimeEntity {
     @Column(name = "thumbnail_url")
     private String thumbnailUrl;
 
+    @Column(name = "img_url")
+    private String imgUrl;
+
     @Column(name = "like_count")
     private int likeCount;
 
@@ -47,41 +50,31 @@ public class Post extends BaseTimeEntity {
     private Category category;
 
     @OneToMany(mappedBy = "post")
-    private List<Image> images = new ArrayList<>();
-
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comments = new ArrayList<>();
+    private List<Comment> comments;
 
     @Builder
     public Post(String title,
                 String author,
                 String content,
                 String thumbnailUrl,
+                String imgUrl,
                 Member member,
-                Category category,
-                Image... images) {
+                Category category) {
         this.title = title;
         this.author = author;
         this.content = content;
         this.thumbnailUrl = thumbnailUrl;
+        this.imgUrl = imgUrl;
         this.likeCount = 0;
         this.viewCount = 0;
         this.member = member;
         this.category = category;
-        for (Image image : images) {
-            this.addImage(image);
-        }
     }
 
     public void toUpdate(PostUpdateDto updateDto) {
         if (updateDto.getCategoryId() != null) {
             this.content = updateDto.getContent();
         }
-    }
-
-    public void addImage(Image image) {
-        images.add(image);
-        image.setPost(this);
     }
 
     public void setComments(List<Comment> comments) {

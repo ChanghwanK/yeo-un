@@ -1,11 +1,18 @@
 package com.yeoun.server.module.model.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import static javax.persistence.FetchType.LAZY;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
 public class Liked {
@@ -15,11 +22,14 @@ public class Liked {
     @Column(name = "liked_id")
     private Long id;
 
-    @ManyToOne(fetch = LAZY)
+
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_Id")
     private Member member;
 
-    @ManyToOne(fetch = LAZY)
+    @ToString.Exclude
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
     private Post post;
 }

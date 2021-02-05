@@ -14,6 +14,6 @@ import lombok.extern.slf4j.Slf4j;
 public class RequestHeader {
 
     private String name;
-    private String userId;
+    private Long memberId;
 
 }
