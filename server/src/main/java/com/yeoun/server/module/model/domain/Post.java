@@ -1,6 +1,6 @@
 package com.yeoun.server.module.model.domain;
 
-import com.yeoun.server.module.dto.PostUpdateDto;
+import com.yeoun.server.module.model.dto.PostUpdateDto;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
