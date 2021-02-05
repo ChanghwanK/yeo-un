@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="fc5f432f-07af-42f0-86a4-ec7ba1450f40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/MemberController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/CategoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/CategoryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/CommentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/repository/CommentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/PostService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,9 +208,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ServerApplication" />
+        <item itemvalue="Gradle.PostControllerTests.create" />
         <item itemvalue="Gradle.LikeControllerTests.read" />
         <item itemvalue="Gradle.LikeControllerTests.create" />
-        <item itemvalue="Gradle.PostControllerTests.create" />
         <item itemvalue="Gradle.PostControllerTests.getPost" />
       </list>
     </recent_temporary>
