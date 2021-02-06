@@ -60,7 +60,7 @@ const popular = [
 
 const top4 = [
   {
-    title: '초기 그리스도교 미술에서 볼 수 있는',
+    title: '초기 그리스도교',
     image: post5,
     postNumber: 5,
     category: '문학',
