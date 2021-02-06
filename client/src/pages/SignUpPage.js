@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { withRouter } from 'react-router-dom';
 
 import Logo from 'components/Logo';
-
-const URL = 'http://493600167198.ngrok.io';
 
 const SignUpPage = () => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [checkPw, setCheckPw] = useState('');
-  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
   const [nickname, setNickname] = useState('');
   const [profileImage, setProfileImage] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -28,7 +27,7 @@ const SignUpPage = () => {
   };
 
   const OnChangeNameInput = (e) => {
-    setName(e.target.value);
+    setUsername(e.target.value);
   };
 
   const OnChangeNicknameInput = (e) => {
@@ -59,24 +58,37 @@ const SignUpPage = () => {
     // formData.append('profileImage', profileImage);
     // formData.append('nickname', nickname);
     const data = {
-      name: name,
+      name: username,
       password: pw,
       email: id,
       phone: phoneNumber,
       profileImage: profileImage,
       nickname: nickname,
+      memberType: 'USER',
     };
 
+    const headers = {
+      'Content-Type': `application/json`,
+      'Access-Control-Allow-Origin': '*',
+    };
+
+    console.log(JSON.stringify(data));
+
     axios({
-      method: 'post',
-      url: `${URL}/api/member/sign-up`,
-      Member: JSON.stringify(data),
-      headers: {
-        'Content-Type': `application/json`,
-        'Access-Control-Allow-Origin': '*',
+      method: 'put',
+      url: `/api/member/sign-up`,
+      data: {
+        header: { name: 'SignUpRequest' },
+        payload: data,
       },
+      headers: headers,
     }).then((res) => {
-      console.log(res);
+      if (res.status === 200) {
+        alert('회원가입 되었습니다.');
+        props.history.push('/');
+      } else {
+        alert('회원가입에 실패했습니다.');
+      }
     });
   };
 
@@ -100,7 +112,7 @@ const SignUpPage = () => {
           />
           <Boolpw>{pw === checkPw ? 'Correct' : 'Wrong'}</Boolpw>
           <p>이름(Name)</p>
-          <Input type="text" onChange={OnChangeNameInput} value={name} />
+          <Input type="text" onChange={OnChangeNameInput} value={username} />
 
           <p>닉네임(Nickname)</p>
           <Input
@@ -142,9 +154,10 @@ const SignUpPage = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  height: 140vh;
+  height: 100%;
   justify-content: center;
   align-items: center;
+  margin: 50px 0;
 
   p {
     margin: 10px;
@@ -156,21 +169,24 @@ const Border = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 130vh;
+  height: 100%;
   background-color: #f7f7f7;
   border-radius: 10px;
 `;
 
 const Boolpw = styled.p`
-  color: red;
+  color: blue;
 `;
 
 const Input = styled.input`
-  border: 1px solid black;
+  border: 1px solid #8f8f8f;
   margin: 10px;
   padding: 10px;
   border-radius: 5px;
   background-color: white;
+  &:hover {
+    border: 1px solid #181825;
+  }
 `;
 
 const Button = styled.button`
@@ -181,6 +197,9 @@ const Button = styled.button`
   border-radius: 5px;
   background-color: #37373d;
   color: white;
+  &:hover {
+    background-color: #a9a9a9;
+  }
 `;
 
 const HeaderText = styled.p`
@@ -205,4 +224,4 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-export default SignUpPage;
+export default withRouter(SignUpPage);

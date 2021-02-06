@@ -6,6 +6,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import { Avatar } from '@material-ui/core';
+import PostCategory from 'components/posts-page/PostCategory';
 
 const useStyles = makeStyles({
   avatar: {
@@ -57,11 +58,19 @@ const ContentContainer = ({
       )}
       <BottomTextContainer>
         {who ? <span>by {who}</span> : <span>by Hyeonsu</span>}
-        <BottomCategoryContainer>{category}</BottomCategoryContainer>
+        <BottomCategoryContainer>
+          <PostCategory click={true} hashtag={false}>
+            {category}
+          </PostCategory>{' '}
+        </BottomCategoryContainer>
         <BottomCategoryContainer>
           {hashtag
             ? hashtag.map((i) => {
-                return <div key={i}>{i}</div>;
+                return (
+                  <PostCategory click={false} hashtag={true} key={i}>
+                    {i}
+                  </PostCategory>
+                );
               })
             : ''}
         </BottomCategoryContainer>
@@ -71,26 +80,22 @@ const ContentContainer = ({
 };
 
 const Container = styled.div`
+  margin-top: 5px;
   display: flex;
   flex-direction: column;
-  background-color: #dcdcdc;
-  border-bottom-right-radius: 15px;
-  border-bottom-left-radius: 15px;
   width: 100%;
-  height: 8vw;
+  height: 100%;
 `;
 
 const IconContainer = styled.div`
   display: flex;
-  padding: 0.5vw;
 `;
 
 const SmallTextContainer = styled.div`
   display: flex;
-  padding-left: 1vw;
 
   span {
-    font-size: 0.6vw;
+    font-size: 0.8vw;
     & {
       margin: 2px;
     }
@@ -98,14 +103,12 @@ const SmallTextContainer = styled.div`
 `;
 
 const TitleText = styled.p`
-  font-size: 1.4vw;
+  font-size: 1.5vw;
   font-weight: 550;
-  padding-left: 1vw;
 `;
 
 const BottomTextContainer = styled.div`
   display: flex;
-  padding-left: 1vw;
 
   span {
     font-size: 0.7vw;
@@ -114,7 +117,7 @@ const BottomTextContainer = styled.div`
 
 const BottomCategoryContainer = styled.div`
   display: flex;
-  padding-left: 1vw;
+  margin-left: 5px;
 `;
 
 export default ContentContainer;

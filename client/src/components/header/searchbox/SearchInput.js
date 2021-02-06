@@ -32,7 +32,7 @@ const SearchInput = () => {
         type="text"
       />
       <SearchIcon fontSize="large" />
-      <SearchBox isBoxOpened={isBoxOpened} />
+      <SearchBox value={inputText} isBoxOpened={isBoxOpened} />
     </Container>
   );
 };
