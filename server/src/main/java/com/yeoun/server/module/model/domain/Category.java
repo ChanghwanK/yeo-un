@@ -1,11 +1,17 @@
 package com.yeoun.server.module.model.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import lombok.NoArgsConstructor;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter
 public class Category extends BaseTimeEntity {
@@ -19,5 +25,5 @@ public class Category extends BaseTimeEntity {
     private String description;
 
     @OneToMany(mappedBy = "category")
-    private List<Post> post = new ArrayList<>();
+    private List<Post> post;
 }

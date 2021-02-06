@@ -1,6 +1,10 @@
 package com.yeoun.server.module.model.domain;
 
+import com.yeoun.server.module.model.dto.comment.CommentUpdateRequest;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +13,9 @@ import java.util.List;
 
 import static javax.persistence.FetchType.LAZY;
 
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Getter @Setter
 public class Comment extends BaseTimeEntity {
@@ -21,23 +28,17 @@ public class Comment extends BaseTimeEntity {
     private String content;
     private int likeCount;
 
-    @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "parent_id")
-    private Comment parent;
 
-    @OneToMany(mappedBy = "parent")
-    private List<Comment> child = new ArrayList<>();
-
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
-
-    public void addChildComment(Comment child) {
-        this.child.add(child);
-        child.setParent(this);
-    }
 
     public void setPost(Post post) {
         this.post = post;
         post.getComments().add(this);
+    }
+
+    public void toUpdate(CommentUpdateRequest updateDto) {
+        this.content = updateDto.getContent();
+        this.likeCount = updateDto.getLikCount();
     }
 }
