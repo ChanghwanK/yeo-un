@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import temp from 'images/temp.png';
 import temp1 from 'images/temp1.png';
 
 import PostCategory from 'components/posts-page/PostCategory';
+import CardContext from 'contexts/CardContext';
 
 const PostDetailPage = ({ match }) => {
   const postId = match.params.number;
+
+  const [state, actions] = useContext(CardContext);
 
   return (
     <Container>

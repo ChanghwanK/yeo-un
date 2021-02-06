@@ -16,13 +16,12 @@ const PostCategory = ({ hashtag, children, click }) => {
 const Container = styled.div`
   display: flex;
   background-color: #f7f8f9;
-  border-radius: 30px;
-  width: 80%;
+  border-radius: 15px;
+  width: 3.5vw;
   height: 30px;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  margin: 0px 10px 0px 0px;
+  font-size: 10px;
 
   ${(props) => {
     if (props.click) {

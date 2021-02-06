@@ -17,7 +17,7 @@ const SubHeader = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 10000,
     autoplay: true,
   };
   return (

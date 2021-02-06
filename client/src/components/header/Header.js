@@ -64,6 +64,7 @@ const Left = styled.div`
   p {
     padding-left: 30px;
     cursor: pointer;
+    text-decoration: none;
   }
 `;
 

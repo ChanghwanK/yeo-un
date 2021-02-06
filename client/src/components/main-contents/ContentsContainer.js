@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 
 import MainCard from 'components/small-card/MainCard';
 // import CardContainer from 'components/main-contents/CardContainer';
+import CardContext from 'contexts/CardContext';
 
-import post1 from 'images/게시글1.jpg';
-import post2 from 'images/게시글2.jpg';
-import post3 from 'images/게시글3.jpg';
-import post4 from 'images/게시글4.jpg';
-import post5 from 'images/게시글5.jpg';
-import post6 from 'images/게시글6.jpg';
-import post7 from 'images/게시글7.jpg';
-import post8 from 'images/게시글8.jpg';
-import post9 from 'images/게시글9.jpg';
-import post10 from 'images/게시글10.jpg';
-import post11 from 'images/게시글11.jpg';
-import post12 from 'images/게시글12.jpg';
-import post13 from 'images/게시글13.jpg';
-import post14 from 'images/게시글14.jpg';
-import post15 from 'images/게시글15.jpg';
-import post16 from 'images/게시글16.jpg';
+import post1 from 'images/01.png';
+import post2 from 'images/02.png';
+import post3 from 'images/03.png';
+import post4 from 'images/04.png';
+import post5 from 'images/05.png';
+import post6 from 'images/06.png';
+import post7 from 'images/07.png';
+import post8 from 'images/08.png';
+import post9 from 'images/09.png';
+import post10 from 'images/10.png';
+import post11 from 'images/11.png';
+import post12 from 'images/12.png';
+import post13 from 'images/13.png';
+import post14 from 'images/14.png';
+import post15 from 'images/15.png';
+import post16 from 'images/16.png';
 
 // title={props.title}
 // content={props.content}
@@ -28,28 +29,28 @@ import post16 from 'images/게시글16.jpg';
 
 const popular = [
   {
-    title: '한적한 카페.. 그리고 커피 한 잔',
+    title: '오리지널 프린트 ',
     image: post1,
     postNumber: 1,
     category: '문학',
     hashtag: ['힐링', '감성적인'],
   },
   {
-    title: '햇빛이 따스한 어느 날 오후',
+    title: '파피에 콜레',
     image: post2,
     postNumber: 2,
     category: '문학',
     hashtag: ['감성적인', '화려한', '조용한'],
   },
   {
-    title: '아침 해를 바라보며',
+    title: ' 애드가 알란 포우',
     image: post3,
     postNumber: 3,
     category: '운동',
     hashtag: ['감성적인', '화려한', '밝은'],
   },
   {
-    title: '책 읽기 좋은 카페',
+    title: '추상적인, 비구상적인',
     image: post4,
     postNumber: 4,
     category: '문학',
@@ -59,28 +60,28 @@ const popular = [
 
 const top4 = [
   {
-    title: '양말들',
+    title: '초기 그리스도교 미술에서 볼 수 있는',
     image: post5,
     postNumber: 5,
     category: '문학',
     hashtag: ['힐링', '감성적인', '기분좋은'],
   },
   {
-    title: '매직타임',
+    title: '외광파',
     image: post6,
     postNumber: 6,
     category: '문학',
     hashtag: ['감성적인', '화려한', '조용한'],
   },
   {
-    title: '달무리',
+    title: '오르피즘',
     image: post7,
     postNumber: 7,
     category: '문학',
     hashtag: ['감성적인', '화려한', '조용한'],
   },
   {
-    title: '카페',
+    title: '포토리얼리즘',
     image: post8,
     postNumber: 8,
     category: '문학',
@@ -90,28 +91,28 @@ const top4 = [
 
 const last = [
   {
-    title: '영천 버드나무 숲',
+    title: '회화적 추상 이후의',
     image: post9,
     postNumber: 9,
     category: '문학',
     hashtag: ['힐링', '감성적인'],
   },
   {
-    title: '대구 이월드',
+    title: '라파엘 이전의',
     image: post10,
     postNumber: 10,
     category: '문학',
     hashtag: ['감성적인', '화려한', '조용한'],
   },
   {
-    title: '햇빛이 따스한 어느 날 오후',
+    title: '원초주의',
     image: post11,
     postNumber: 11,
     category: '문학',
     hashtag: ['감성적인', '화려한', '조용한'],
   },
   {
-    title: '햇빛이 따스한 어느 날 오후',
+    title: '돋보이게 그리기',
     image: post12,
     postNumber: 12,
     category: '문학',
@@ -121,28 +122,28 @@ const last = [
 
 const recommend = [
   {
-    title: '한적한 카페.. 그리고 커피 한 잔',
+    title: '조화, 안정감',
     image: post13,
     postNumber: 13,
     category: '문학',
     hashtag: ['힐링', '감성적인'],
   },
   {
-    title: '햇빛이 따스한 어느 날 오후',
+    title: ' 스푸마토',
     image: post14,
     postNumber: 14,
     category: '문학',
     hashtag: ['감성적인', '화려한', '조용한'],
   },
   {
-    title: '햇빛이 따스한 어느 날 오후',
+    title: '색채의 조화',
     image: post15,
     postNumber: 15,
     category: '문학',
     hashtag: ['감성적인', '화려한', '조용한'],
   },
   {
-    title: '햇빛이 따스한 어느 날 오후',
+    title: '생테티슴',
     image: post16,
     postNumber: 16,
     category: '문학',
@@ -151,6 +152,15 @@ const recommend = [
 ];
 
 const ContentsContainer = () => {
+  const [state, actions] = useContext(CardContext);
+
+  useEffect(() => {
+    actions.setPopularCard(popular);
+    actions.setTop4Card(top4);
+    actions.setLastCard(last);
+    actions.setRecommendCard(recommend);
+  }, []);
+
   return (
     <Container>
       <TitleText>인기 게시물</TitleText>

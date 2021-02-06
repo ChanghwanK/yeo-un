@@ -3,6 +3,7 @@ import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
     ${reset};
+
     button,
     input,
     a,
@@ -13,6 +14,8 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         background-color: white;
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+        font-family: 'Noto Sans KR', sans-serif;
     }
 `;
 
