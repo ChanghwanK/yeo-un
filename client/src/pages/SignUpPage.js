@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 
 import Logo from 'components/Logo';
 
-const SignUpPage = () => {
+const SignUpPage = (props) => {
   const [id, setId] = useState('');
   const [pw, setPw] = useState('');
   const [checkPw, setCheckPw] = useState('');
