@@ -18,16 +18,18 @@ public class MemberController {
 
     private final MemberService memberService;
 
-    @PutMapping(value = "/sign-up", produces = {MediaType.APPLICATION_JSON_VALUE})
+    @PostMapping(value = "/sign-up", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> signUp(@RequestBody Request request) throws JsonProcessingException {
 
         log.info("[Request] member-sign-up");
         request.validateHeader("SignUpRequest");
         request.validatePayload();
 
+        log.info(request.getPayload().toString());
         String signUpResult = memberService.signUp(request.getPayload());
         return new ResponseEntity<>(signUpResult, HttpStatus.OK);
     }
+
 
     @PutMapping(value = "/sign-in", produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<?> signInSubmit(@RequestBody Request request) {
@@ -36,6 +38,7 @@ public class MemberController {
         request.validateHeader("SignInRequest");
         request.validatePayload();
 
+        log.info(request.getPayload().toString());
         String signInResult = memberService.signIn(request.getPayload());
         return new ResponseEntity<>(signInResult, HttpStatus.OK);
     }
@@ -46,7 +49,8 @@ public class MemberController {
         log.info("[Request] member-sign-out");
         request.validateHeader("SignOutRequest");
 
-        String signOutResult = memberService.signOut(request.getHeader().getMemberId());
+        log.info(request.getPayload().toString());
+        String signOutResult = memberService.signOut(request.getPayload());
         return new ResponseEntity<>(signOutResult, HttpStatus.OK);
     }
 }

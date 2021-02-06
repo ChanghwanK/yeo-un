@@ -40,7 +40,9 @@ public class PostController {
     postService.create(postRequestDto);
   }
 
-  // Page 타입으로 변경
+  /**
+   *  카테고리별 페이징을 위한 메서드
+   */
   @GetMapping("/{category-id}")
   public Page<Post> read(@PathVariable(name = "category-id") Long categoryId,
                          @PageableDefault Pageable pageable) {

@@ -6,12 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="fc5f432f-07af-42f0-86a4-ec7ba1450f40" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/MemberController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/MemberController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/PostController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller/PostController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Comment.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/model/domain/Comment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/MemberService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/MemberService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/PostService.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/service/PostService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/com/yeoun/server/module/controller/PostControllerTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/com/yeoun/server/module/controller/PostControllerTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +84,10 @@
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module/controller" />
+      <recent name="$PROJECT_DIR$/server/src/main/java/com/yeoun/server/module" />
+    </key>
     <key name="CreateTestDialog.RecentsKey">
       <recent name="com.yeoun.server.module.controller" />
     </key>
@@ -106,12 +104,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CommentControllerTests.create" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="LikeControllerTests.create" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/server" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;com.yeoun.server.module.controller.CommentControllerTests.create&quot;" />
+        <option name="scriptParameters" value="--tests &quot;com.yeoun.server.module.controller.LikeControllerTests.create&quot;" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="LikeControllerTests.read" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/server" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--tests &quot;com.yeoun.server.module.controller.LikeControllerTests.read&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -185,9 +204,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ServerApplication" />
+        <item itemvalue="Gradle.LikeControllerTests.read" />
+        <item itemvalue="Gradle.LikeControllerTests.create" />
         <item itemvalue="Gradle.PostControllerTests.create" />
         <item itemvalue="Gradle.PostControllerTests.getPost" />
-        <item itemvalue="Gradle.CommentControllerTests.create" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +221,7 @@
       <updated>1612457812427</updated>
       <workItem from="1612457813758" duration="7726000" />
       <workItem from="1612513481244" duration="416000" />
-      <workItem from="1612513900488" duration="2129000" />
+      <workItem from="1612513900488" duration="14626000" />
     </task>
     <servers />
   </component>
