@@ -50,46 +50,46 @@ const SignUpPage = (props) => {
 
   const onClickSignInButton = (e) => {
     e.preventDefault();
-    // const formData = new FormData();
-    // formData.append('name', name);
-    // formData.append('password', pw);
-    // formData.append('email', id);
-    // formData.append('phone', phoneNumber);
-    // formData.append('profileImage', profileImage);
-    // formData.append('nickname', nickname);
-    const data = {
-      name: username,
-      password: pw,
-      email: id,
-      phone: phoneNumber,
-      profileImage: profileImage,
-      nickname: nickname,
-      memberType: 'USER',
-    };
+    //   // const formData = new FormData();
+    //   // formData.append('name', name);
+    //   // formData.append('password', pw);
+    //   // formData.append('email', id);
+    //   // formData.append('phone', phoneNumber);
+    //   // formData.append('profileImage', profileImage);
+    //   // formData.append('nickname', nickname);
+    //   const data = {
+    //     name: username,
+    //     password: pw,
+    //     email: id,
+    //     phone: phoneNumber,
+    //     profileImage: profileImage,
+    //     nickname: nickname,
+    //     memberType: 'USER',
+    //   };
 
-    const headers = {
-      'Content-Type': `application/json`,
-      'Access-Control-Allow-Origin': '*',
-    };
+    //   const headers = {
+    //     'Content-Type': `application/json`,
+    //     'Access-Control-Allow-Origin': '*',
+    //   };
 
-    console.log(JSON.stringify(data));
+    //   console.log(JSON.stringify(data));
 
-    axios({
-      method: 'put',
-      url: `/api/member/sign-up`,
-      data: {
-        header: { name: 'SignUpRequest' },
-        payload: data,
-      },
-      headers: headers,
-    }).then((res) => {
-      if (res.status === 200) {
-        alert('회원가입 되었습니다.');
-        props.history.push('/');
-      } else {
-        alert('회원가입에 실패했습니다.');
-      }
-    });
+    //   axios({
+    //     method: 'put',
+    //     url: `/api/member/sign-up`,
+    //     data: {
+    //       header: { name: 'SignUpRequest' },
+    //       payload: data,
+    //     },
+    //     headers: headers,
+    //   }).then((res) => {
+    //     if (res.status === 200) {
+    //       alert('회원가입 되었습니다.');
+    //       props.history.push('/');
+    //     } else {
+    //       alert('회원가입에 실패했습니다.');
+    //     }
+    //   });
   };
 
   return (

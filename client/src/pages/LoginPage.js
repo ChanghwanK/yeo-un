@@ -25,36 +25,34 @@ const LoginPage = (props) => {
   };
 
   const onClickLoginButton = () => {
-    const data = {
-      email: id,
-      password: pw,
-    };
-
-    const headers = {
-      'Content-Type': `application/json`,
-      'Access-Control-Allow-Origin': '*',
-    };
-
-    if (id !== '' && pw !== '') {
-      axios({
-        url: `/api/member/sign-in`,
-        method: 'put',
-        data: {
-          header: { name: 'SignInRequest' },
-          payload: data,
-        },
-        headers: headers,
-      }).then((res) => {
-        if (res.status === 200) {
-          alert('로그인 됐습니다.');
-          action.setLogined(true);
-          window.localStorage.setItem('id', id);
-          props.history.push('/');
-        } else {
-          alert('로그인에 실패했습니다.');
-        }
-      });
-    }
+    // const data = {
+    //   email: id,
+    //   password: pw,
+    // };
+    // const headers = {
+    //   'Content-Type': `application/json`,
+    //   'Access-Control-Allow-Origin': '*',
+    // };
+    // if (id !== '' && pw !== '') {
+    //   axios({
+    //     url: `/api/member/sign-in`,
+    //     method: 'put',
+    //     data: {
+    //       header: { name: 'SignInRequest' },
+    //       payload: data,
+    //     },
+    //     headers: headers,
+    //   }).then((res) => {
+    //     if (res.status === 200) {
+    //       alert('로그인 됐습니다.');
+    //       action.setLogined(true);
+    //       window.localStorage.setItem('id', id);
+    //       props.history.push('/');
+    //     } else {
+    //       alert('로그인에 실패했습니다.');
+    //     }
+    //   });
+    // }
   };
 
   return (
