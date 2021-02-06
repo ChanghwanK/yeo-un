@@ -25,37 +25,37 @@ const UploadForm = (props) => {
 
   const onClickSubmitButton = (e) => {
     e.preventDefault();
-    const title = document.getElementsByName('title')[0].value.trim();
-    const contents = document.getElementsByName('contents')[0].value.trim();
+    // const title = document.getElementsByName('title')[0].value.trim();
+    // const contents = document.getElementsByName('contents')[0].value.trim();
 
-    const data = {
-      title: title,
-      author: 'hyeonsu',
-      content: contents,
-      categoryId: Number(state.categoryNumber),
-      memberId: 1,
-      imgUrl: fileURL,
-    };
+    // const data = {
+    //   title: title,
+    //   author: 'hyeonsu',
+    //   content: contents,
+    //   categoryId: Number(state.categoryNumber),
+    //   memberId: 1,
+    //   imgUrl: fileURL,
+    // };
 
-    const headers = {
-      'Content-Type': `application/json`,
-      'Access-Control-Allow-Origin': '*',
-    };
+    // const headers = {
+    //   'Content-Type': `application/json`,
+    //   'Access-Control-Allow-Origin': '*',
+    // };
 
-    console.log(data);
+    // console.log(data);
 
-    axios({
-      method: 'POST',
-      url: `/api/posts`,
-      data: data,
-      headers: headers,
-    })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios({
+    //   method: 'POST',
+    //   url: `/api/posts`,
+    //   data: data,
+    //   headers: headers,
+    // })
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   const onChangeFile = (e) => {

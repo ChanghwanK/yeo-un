@@ -33,6 +33,8 @@
     "prettier": "^2.2.1"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -56,5 +58,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy" : "http://771fdb2170a5.ngrok.io"
+  "homepage": "https://github.com/yeo-un/yeo-un"
 }
