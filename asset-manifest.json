@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/yeo-un/static/css/main.afd7172b.chunk.css",
-    "main.js": "/yeo-un/static/js/main.9ccbba04.chunk.js",
-    "main.js.map": "/yeo-un/static/js/main.9ccbba04.chunk.js.map",
+    "main.js": "/yeo-un/static/js/main.bbe1cb2d.chunk.js",
+    "main.js.map": "/yeo-un/static/js/main.bbe1cb2d.chunk.js.map",
     "runtime-main.js": "/yeo-un/static/js/runtime-main.f18f1c59.js",
     "runtime-main.js.map": "/yeo-un/static/js/runtime-main.f18f1c59.js.map",
     "static/css/2.442df279.chunk.css": "/yeo-un/static/css/2.442df279.chunk.css",
@@ -41,6 +41,6 @@
     "static/css/2.442df279.chunk.css",
     "static/js/2.0164ff1b.chunk.js",
     "static/css/main.afd7172b.chunk.css",
-    "static/js/main.9ccbba04.chunk.js"
+    "static/js/main.bbe1cb2d.chunk.js"
   ]
 }
